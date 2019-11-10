@@ -1,0 +1,27 @@
+﻿using System;
+using AutoMapper;
+
+namespace BoardGamesServer.Configurations
+{
+    internal static class AutoMapperConfig
+    {
+        public static IMapper MapperConfiguration()
+        {
+            var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.ShouldMapProperty = p => p.GetMethod.IsPublic;
+                    cfg.AddProfile<BoardGamesOnlineMapperProfile>();
+                });
+
+            var mapper = config.CreateMapper();
+
+            return mapper;
+        }
+
+        public static void CreateMapTwoWay<T1, T2>(this Profile profile)
+        {
+            profile.CreateMap<T1, T2>();
+            profile.CreateMap<T2, T1>();
+        }
+    }
+}

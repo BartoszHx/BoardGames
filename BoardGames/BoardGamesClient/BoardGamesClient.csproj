@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BoardGamesGrpc\BoardGamesGrpc.csproj" />
+    <ProjectReference Include="..\BoardGamesServer\BoardGamesServer.csproj" />
+    <ProjectReference Include="..\BoardGamesShared\BoardGamesShared.csproj" />
+    <ProjectReference Include="..\BoardGames\BoardGames.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.10.0" />
+    <PackageReference Include="Grpc.Core" Version="2.24.0" />
+  </ItemGroup>
+
+</Project>

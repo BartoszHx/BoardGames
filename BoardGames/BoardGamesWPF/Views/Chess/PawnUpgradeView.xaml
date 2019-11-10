@@ -1,0 +1,24 @@
+﻿<Window x:Class="BoardGamesWPF.Views.Chess.PawnUpgradeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BoardGamesWPF.Views.Chess"
+        mc:Ignorable="d"
+        Title="PawnUpgradeView" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListView
+            Grid.Row="0"
+            ItemsSource="{Binding PawChessList}"
+            SelectedItem="{Binding SelectedPawChees}"
+            SelectionMode="Single"/>
+        <Button
+            Grid.Row="1"
+            Content="OK"
+            Command="{Binding ChosedPawCommand}"/>
+    </Grid>
+</Window>

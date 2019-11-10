@@ -1,0 +1,35 @@
+﻿syntax = "proto3";
+
+package BoardGamesGrpc.Users;
+
+option csharp_namespace = "BoardGamesGrpc.Users";
+
+import "BoardGamesGrpc/protos/shared_model.proto";
+
+
+message LoginRequest {
+	string Email = 1;
+	string Password = 2;
+}
+
+message RegistrationRequest{
+	string Name = 1;
+	string Email = 2;
+	string Password = 3;
+	string RepeatPassword = 4;
+}
+
+message UserResponse{
+	BoardGamesGrpc.SharedModel.ServerResponse Respons = 1;
+	BoardGamesGrpc.SharedModel.User User = 2;
+}
+
+message ServiceResponse {
+	BoardGamesGrpc.SharedModel.ServerResponse Respons = 1;
+}
+
+service UserService {
+	rpc Login(LoginRequest) returns (UserResponse);
+
+	rpc Registration(RegistrationRequest) returns (ServiceResponse);
+}

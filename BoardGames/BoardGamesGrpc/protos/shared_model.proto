@@ -1,0 +1,23 @@
+﻿syntax = "proto3";
+
+package BoardGamesGrpc.SharedModel;
+option csharp_namespace = "BoardGamesGrpc.SharedModel";
+
+
+enum ServiceResponseStatus{
+	Ok = 0;
+	Error = 1;
+	Cancel = 2;
+}
+
+
+message ServerResponse{
+	ServiceResponseStatus Status = 1;
+	map<string, string> Messages = 2;
+}
+
+message User {
+	int32 UserId = 1;
+	string Name = 2;
+	string Email = 3;
+}

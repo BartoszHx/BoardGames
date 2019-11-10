@@ -1,0 +1,109 @@
+﻿syntax = "proto3";
+
+package BoardGamesGrpc.GameOnlines;
+option csharp_namespace = "BoardGamesGrpc.GameOnlines";
+
+import "BoardGamesGrpc/protos/shared_model.proto";
+
+enum MatchResults{
+	Null = 0;
+	InProgress = 1;
+	Win = 2;
+	Loss = 3;
+	Draw = 4;
+	Disconnected = 5;
+}
+
+message SearchOpponentRequest {
+	int32 UserId = 1;
+	int32 GameType = 2;
+}
+
+message SearchOpponentRespons {
+	BoardGamesGrpc.SharedModel.ServerResponse Respons = 1;
+	Match Match = 2;
+}
+
+message CancelSearchOpponentRequest {
+	int32 UserId = 1;
+}
+
+
+message CancelSearchOpponentRespons{
+	BoardGamesGrpc.SharedModel.ServerResponse Respons = 1;
+}
+
+message Player
+{
+	int32 ID = 1;
+	string Name = 2;
+	int32 Color = 3;
+}
+
+message Pawn
+{
+	int32 Color = 1;
+	int32 Type = 2;
+}
+
+message Field{
+	int32 Heigh = 1;
+	int32 Width = 2;
+	Pawn Pawn = 3;
+} 
+
+message Board
+{
+	int32 MaxHeight = 1;
+	int32 MaxWidth = 2;
+	int32 MinHeight = 3;
+	int32 MinWidth = 4;
+	repeated Field FieldList = 5;
+}
+
+message MatchUser
+{
+	int32 MatchUserId = 1;
+	int32 MatchId = 2;
+	BoardGamesGrpc.SharedModel.User User = 3;
+	MatchResults MatchResult = 4;
+}
+
+message Match
+{
+	int32 MatchId = 1;
+	int32 GameType = 2;
+	string DateStart = 3;
+	string DateEnd = 4;
+	//google.protobuf.Timestamp DateStart = 3;
+	//google.protobuf.Timestamp DateEnd = 4;
+	repeated MatchUser MatchUsers = 5;
+}
+
+message Game
+{
+	Player PlayerTurn = 1;
+	repeated Player PlayerList = 2;
+	Board Board = 3;
+}
+
+message GamePlay
+{
+	Game Game = 1; 
+	Match Match = 2;
+}
+
+message PlayMatchRequest
+{
+	int32 UserId = 1;
+	GamePlay GamePlay = 2;
+}
+
+service GameOnlineService {
+	rpc SearchOpponent(SearchOpponentRequest) returns (SearchOpponentRespons);
+
+	rpc CancelSearchOpponent(CancelSearchOpponentRequest) returns (CancelSearchOpponentRespons);
+
+	rpc PlayMatch(stream PlayMatchRequest) returns (stream GamePlay);
+
+}
