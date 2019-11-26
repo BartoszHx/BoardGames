@@ -3,10 +3,15 @@ using BoardGames.Interfaces;
 using BoardGames.Models;
 using BoardGamesShared.Interfaces;
 using Ninject.Modules;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace BoardGames.KernelModules
+namespace BoardGames.Kernels
 {
-    internal class ChessModule : NinjectModule
+    class BoardGameModule : NinjectModule
     {
         public override void Load()
         {
@@ -14,7 +19,7 @@ namespace BoardGames.KernelModules
             Bind<IField>().To<FieldModel>();
             Bind<IPawn>().To<PawModel>();
             Bind<ILastMove>().To<LastMoveModel>();
-	        Bind<IRulesChess>().To<RulesChess>();
+            Bind<IRulesChess>().To<RulesChess>();
         }
     }
 }

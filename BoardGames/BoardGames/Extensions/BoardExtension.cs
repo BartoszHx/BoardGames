@@ -53,12 +53,12 @@ namespace BoardGames.Extensions
 		    };
 	    }
 
-	    public static void SetStartBoard(this IBoard board, IKernel kernel)
+	    public static void SetStartBoard(this IBoard board)
 	    {
 		    for (int i = board.MinHeight; i <= board.MaxHeight; i++)
 		    for (int j = board.MinWidth; j <= board.MaxWidth; j++)
 		    {
-			    IField field = kernel.Get<IField>();
+			    IField field = KernelInstance.Get<IField>();
 			    field.Heigh = i;
 			    field.Width = j;
 			    board.FieldList.Add(field);

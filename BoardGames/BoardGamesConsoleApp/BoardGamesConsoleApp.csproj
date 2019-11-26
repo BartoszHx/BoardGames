@@ -102,6 +102,14 @@
       <Project>{3bdbc363-7807-4787-a6fc-64b6308614a3}</Project>
       <Name>BoardGamesServer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BoardGamesShared\BoardGamesShared.csproj">
+      <Project>{3873864B-A1F6-4DEE-BC8D-34BB7CFECB74}</Project>
+      <Name>BoardGamesShared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BoardGames\BoardGames.csproj">
+      <Project>{abc3193a-43ca-4783-8ff7-dc40318d2c90}</Project>
+      <Name>BoardGames</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Grpc.Core.2.24.0\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.2.24.0\build\net45\Grpc.Core.targets')" />

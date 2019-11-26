@@ -1,6 +1,6 @@
 ﻿using BoardGames.Extensions;
 using BoardGames.Games.Checkers;
-using BoardGames.KernelModules;
+using BoardGames.Kernels;
 using BoardGamesShared.Enums;
 using BoardGamesShared.Interfaces;
 using Ninject;
@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BoardGames.Models.Checkers
+namespace BoardGames.Games.Checkers
 {
     internal class CheckerGame : IGame
     {
@@ -17,15 +17,11 @@ namespace BoardGames.Models.Checkers
 	    public IBoard Board { get; set; }
 	    public Action<MessageContents> Alert { get; set; }
 
-	    private IKernel kernel => KernelInstance.CheckerKernel;
-
-		//Jaka jest różnica między grą, a zasadami?
-		//Nie wiem czy zasady nie dotyczą tylko pionków, a nie samej gry
 	    private RulesChecker Rules; //Poźniej na interface
 
         public CheckerGame()
         {
-	        Board = kernel.Get<IBoard>();
+	        Board = KernelInstance.Get<IBoard>();
 			Rules = new RulesChecker(Board);
         }
 
@@ -35,8 +31,8 @@ namespace BoardGames.Models.Checkers
 		    Board.MaxWidth = 8;
 		    Board.MinHeight = 1;
 		    Board.MinWidth = 1;
-			SetStartBoard();
-			Rules.SetStartPositionOnBoard();
+            Board.SetStartBoard();
+            Rules.SetStartPositionOnBoard();
             PlayerList = playerList.ToList();
         }
 
@@ -77,11 +73,6 @@ namespace BoardGames.Models.Checkers
 	        PlayerTurn = PlayerList.FirstOrDefault(p => p != PlayerTurn);
 
         }
-
-        private void SetStartBoard()
-	    {
-		    Board.SetStartBoard(kernel);
-	    }
 
 	    private bool IsWin(PawColors color)
 	    {

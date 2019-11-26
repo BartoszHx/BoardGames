@@ -1,9 +1,7 @@
-﻿using BoardGamesGrpc.Users;
-using Grpc.Core;
+﻿using Grpc.Core;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using BoardGamesGrpc.GameOnlines;
 
 namespace BoardGamesConsoleApp
 {
@@ -18,11 +16,19 @@ namespace BoardGamesConsoleApp
 
         static void Main(string[] args)
         {
+
+            var abc = BoardGames.Factories.GameFactory.Create(BoardGamesShared.Enums.GameTypes.Chess);
+            var cba = BoardGames.Factories.GameFactory.Create(BoardGamesShared.Enums.GameTypes.Checkers);
+
+            abc.StartGame(null);
+            cba.StartGame(null);
+
+
             //NormalTest();
 
             //new Program().PlayMatchTest();
             //new Program().BigTest();
-            new Program().LoginTest();
+            //new Program().LoginTest();
 
 
 
@@ -33,7 +39,7 @@ namespace BoardGamesConsoleApp
             Console.ReadKey();
 
         }
-
+    /*
         private GamePlay GP;
         private int userID;
 
@@ -159,5 +165,6 @@ namespace BoardGamesConsoleApp
 
             var stop = 1;
         }
+        */
     }
 }

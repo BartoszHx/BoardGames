@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace BoardGames.Games.Chess
 {
-    internal class RulesChess: IRulesChess
+    internal class RulesChess : IRulesChess
     {
 	    private readonly IBoard board;
 	    public ILastMove LastMove { get; set; }
@@ -84,13 +84,10 @@ namespace BoardGames.Games.Chess
 		    fieldNew.Pawn = fieldOld.Pawn;
 			fieldOld.Pawn = null;
 
-		    LastMove = new LastMoveModel() //przemyśleć ten model
-		    {
-			    OldPosition = fieldOld,
-			    NewPosition = fieldNew,
-			    Pawn = fieldNew.Pawn
-		    };
-
+            LastMove = KernelInstance.Get<ILastMove>();
+            LastMove.OldPosition = fieldOld;
+            LastMove.NewPosition = fieldNew;
+            LastMove.Pawn = fieldNew.Pawn;
 
             return true;//Czy potrzebne jest to?
 	    }

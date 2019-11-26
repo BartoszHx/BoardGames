@@ -1,6 +1,6 @@
 ﻿using BoardGames.Extensions;
 using BoardGames.Interfaces;
-using BoardGames.KernelModules;
+using BoardGames.Kernels;
 using BoardGamesShared.Enums;
 using BoardGamesShared.Interfaces;
 using Ninject;
@@ -17,21 +17,19 @@ namespace BoardGames.Games.Chess
 	    public IPlayer PlayerTurn { get; set; }
 	    public IList<IPlayer> PlayerList { get; set; }
 	    public IBoard Board { get; set; }
-	    public Action<MessageContents> Alert { get; set; } //Pokminić jak to ma wygladać
-	    public Func<IEnumerable<PawChess>,PawChess> ChosePawUpgrade { get; set; }
+	    public Action<MessageContents> Alert { get; set; }
+	    public Func<IEnumerable<PawChess>, PawChess> ChosePawUpgrade { get; set; }
 
 	    private readonly List<PawChess> pawToChoseList;
 
 	    private IEnumerable<PawColors> ColorsInGame => PlayerList.Select(s => s.Color);
 	    private readonly IRulesChess Rules;
-	    protected IKernel kernel => KernelInstance.ChessKernel;
 
 	    public ChessGame()
         {
-		    Board = kernel.Get<IBoard>();
-	        Rules = kernel.Get<IRulesChess>(new ConstructorArgument("board", Board));
+		    Board = KernelInstance.Get<IBoard>();
+	        Rules = KernelInstance.Get<IRulesChess>(new ConstructorArgument("board", Board));
 			PlayerList = new List<IPlayer>();
-
 			pawToChoseList = new List<PawChess>(){ PawChess.Bishop, PawChess.Knight, PawChess.Queen, PawChess.Rock };
         }
 
@@ -41,16 +39,11 @@ namespace BoardGames.Games.Chess
 		    Board.MaxWidth = 8;
 		    Board.MinHeight = 1;
 		    Board.MinWidth = 1;
-            SetStartBoard();
-			Rules.SetStartPositionPaws();
+            Board.SetStartBoard();
+            Rules.SetStartPositionPaws();
             PlayerList = playerList.ToList(); //Dać walidację?
 			SetStartPlayers();
 	    }
-
-	    private void SetStartBoard()
-	    {
-		    Board.SetStartBoard(kernel);
-        }
 
 	    private void SetStartPlayers()
         {

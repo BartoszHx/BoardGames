@@ -1,6 +1,6 @@
 ﻿using BoardGames.Extensions;
 using BoardGames.Interfaces;
-using BoardGames.KernelModules;
+using BoardGames.Kernels;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -40,7 +40,7 @@ namespace BoardGames.Games.Chess.Rules
 		    IEnumerable<IField> whereSetPawn = board.FieldList.Where(w => w.Heigh == 7 || w.Heigh == 2);
 		    foreach (IField field in whereSetPawn)
 		    {
-			    field.Pawn = KernelInstance.ChessKernel.Get<IPawn>();
+			    field.Pawn = KernelInstance.Get<IPawn>();
 			    field.Pawn.Type = PawType.PawnChess;
 			    field.Pawn.Color = field.GetPawnStartColor();
             }

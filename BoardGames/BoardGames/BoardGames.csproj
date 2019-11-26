@@ -51,19 +51,19 @@
   <ItemGroup>
     <Compile Include="Extensions\BoardExtension.cs" />
     <Compile Include="Extensions\FieldExtension.cs" />
+    <Compile Include="Factories\GameFactory.cs" />
     <Compile Include="Games\Checkers\RulesChecker.cs" />
     <Compile Include="Games\Checkers\Rules\QueenRules.cs" />
     <Compile Include="Games\Checkers\Rules\StandardCheckersMoveRules.cs" />
-    <Compile Include="KernelModules\KernelsInstance.cs" />
+    <Compile Include="Interfaces\IGameBulider.cs" />
+    <Compile Include="Kernels\BoardGameModule.cs" />
+    <Compile Include="Kernels\KernelsInstance.cs" />
     <Compile Include="Models\PawModel.cs" />
     <Compile Include="Games\Chess\Rules\MoveChessRules.cs" />
     <Compile Include="Games\StandardMoveRules.cs" />
     <Compile Include="Games\Chess\RulesChess.cs" />
     <Compile Include="Interfaces\IMoveRule.cs" />
     <Compile Include="Interfaces\IRules.cs" />
-    <Compile Include="Factories\GameFactory.cs" />
-    <Compile Include="KernelModules\CheckersModule.cs" />
-    <Compile Include="KernelModules\ChessModule.cs" />
     <Compile Include="Games\Checkers\Rules\PawnRules.cs" />
     <Compile Include="Models\BoardModel.cs" />
     <Compile Include="Models\FieldModel.cs" />

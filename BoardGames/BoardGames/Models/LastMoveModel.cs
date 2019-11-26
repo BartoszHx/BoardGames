@@ -8,10 +8,5 @@ namespace BoardGames.Models
         public IField OldPosition { get; set; }
         public IField NewPosition { get; set; }
         public IPawn Pawn { get; set; }
-
-        public LastMoveModel()
-        {
-
-        }
     }
 }

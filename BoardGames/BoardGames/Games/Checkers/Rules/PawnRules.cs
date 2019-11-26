@@ -1,6 +1,6 @@
 ﻿using BoardGames.Games;
 using BoardGames.Games.Checkers.Rules;
-using BoardGames.KernelModules;
+using BoardGames.Kernels;
 using BoardGamesShared.Enums;
 using BoardGamesShared.Interfaces;
 using Ninject;
@@ -44,7 +44,7 @@ namespace BoardGames.Models.Checkers.Rules
 
 	        foreach (IField field in pawnToSet)
 	        {
-		        field.Pawn = KernelInstance.CheckerKernel.Get<IPawn>();
+		        field.Pawn = KernelInstance.Get<IPawn>();
 		        field.Pawn.Type = PawType.PawnCheckers;
 		        //field.Pawn.Type = PawType.QueenCheckers;
                 field.Pawn.Color = (field.Heigh == 8 || field.Heigh == 7 || field.Heigh == 6) ? PawColors.Black : PawColors.White;
