@@ -10,12 +10,12 @@ namespace BoardGamesClient
     //todo Dodać ninject
     public static class ClientBulider
     {
-        public static IUserClientBulider GetUser()
+        public static IUserClientBulider BulidUser()
         {
             return new UserClientBulider();
         }
 
-        public static IGameClientBulider GetGame()
+        public static IGameClientBulider BulidGame()
         {
             return new GameClientBulider();
         }

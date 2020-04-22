@@ -36,7 +36,9 @@ namespace BoardGames.Models.Checkers.Rules
 
         public void SetStartPositionOnBoard()
         {
-	        IEnumerable<IField> pawnToSet = board.FieldList.Where(field =>
+            int idIncrementation = 0;
+
+            IEnumerable<IField> pawnToSet = board.FieldList.Where(field =>
 		        (field.Heigh != 4 && field.Heigh != 5) &&
 		        ((field.Heigh % 2 == 1 && field.Width % 2 == 1) ||
 		         (field.Heigh % 2 == 0 && field.Width % 2 == 0))
@@ -46,8 +48,8 @@ namespace BoardGames.Models.Checkers.Rules
 	        {
 		        field.Pawn = KernelInstance.Get<IPawn>();
 		        field.Pawn.Type = PawType.PawnCheckers;
-		        //field.Pawn.Type = PawType.QueenCheckers;
                 field.Pawn.Color = (field.Heigh == 8 || field.Heigh == 7 || field.Heigh == 6) ? PawColors.Black : PawColors.White;
+                field.Pawn.ID = ++idIncrementation;
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿using BoardGameDatabase.Interfaces;
+﻿using BoardGameDatabase.Buliders;
+using BoardGameDatabase.Interfaces;
+using BoardGameDatabase.Interfaces.Buliders;
 using BoardGameDatabase.Interfaces.Services;
 using BoardGameDatabase.Interfaces.Validators;
 using BoardGameDatabase.Models.Entites;
@@ -24,6 +26,7 @@ namespace BoardGameDatabase.Configurations
             this.Bind<IBoardGameUnitOfWorkBulider>().To<Buliders.BoardGameUnitOfWorkBulider>();
 
             this.Bind<IMatchServiceValidation>().To<MatchServiceValidation>();
+            this.Bind<IMatchServiceValidationBulider>().To<MatchServiceValidationBulider>();
             this.Bind<IPasswordValidation>().To<PasswordValidation>();
             this.Bind<IUserServiceValidation>().To<UserServiceValidation>();
 

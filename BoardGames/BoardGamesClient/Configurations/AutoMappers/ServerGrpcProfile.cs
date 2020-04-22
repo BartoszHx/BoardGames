@@ -5,6 +5,10 @@ using GameOnlineGrpc = BoardGamesGrpc.GameOnlines;
 using BoardGamesClient.Models;
 using BoardGamesShared.Interfaces;
 using UserSharedModelGrpc = BoardGamesGrpc.SharedModel;
+using System.Collections.Generic;
+using Google.Protobuf.Collections;
+using BoardGamesClient.Configurations.AutoMappers.Converters;
+using BoardGamesShared.Models;
 
 namespace BoardGamesClient.Configurations
 {
@@ -14,54 +18,36 @@ namespace BoardGamesClient.Configurations
         {
 
             this.CreateMapTwoWay<UserSharedModelGrpc.User, User>();
-
-            this.CreateMapTwoWay<GameOnlineGrpc.Pawn, Pawn>();
-            this.CreateMapTwoWay<GameOnlineGrpc.Field, Field>();
-            this.CreateMapTwoWay<GameOnlineGrpc.Board, Board>();
-            this.CreateMapTwoWay<GameOnlineGrpc.Match, Match>();
+            this.CreateMap<GameOnlineGrpc.Match, Match>();
+            this.CreateMap<Match, GameOnlineGrpc.Match>().ConvertUsing(typeof(MatchToMatchGrpcConverter));
             this.CreateMapTwoWay<GameOnlineGrpc.GamePlay, GamePlay>();
-            this.CreateMapTwoWay<GameOnlineGrpc.Game, Game>();
+            this.CreateMapTwoWay<GameOnlineGrpc.MatchUser, MatchUser>();
 
             //Interfacy
             this.CreateMap<GameOnlineGrpc.Pawn, IPawn>().ConstructUsing(parentDto => new Pawn());
             this.CreateMap<GameOnlineGrpc.Field, IField>().ConstructUsing(parentDto => new Field());
             this.CreateMap<GameOnlineGrpc.Board, IBoard>().ConstructUsing(parentDto => new Board());
             this.CreateMap<GameOnlineGrpc.Player, IPlayer>().ConstructUsing(parentDto => new Player());
-            this.CreateMap<GameOnlineGrpc.Game, IGameData>().ConstructUsing(parentDto => new Game());
+            this.CreateMap<GameOnlineGrpc.PawnHistory, IPawnHistory>().ConstructUsing(parentDto => new PawnHistory());
+            this.CreateMap<GameOnlineGrpc.GameData, IGameData>().ConstructUsing(parentDto => new GameData());
+
 
             this.CreateMap<IPawn, GameOnlineGrpc.Pawn>();
             this.CreateMap<IField, GameOnlineGrpc.Field>();
-            this.CreateMap<IBoard, GameOnlineGrpc.Board>();
+            this.CreateMap<IBoard, GameOnlineGrpc.Board>().ConvertUsing(typeof(IBoardToBoardGrpcConverter));
             this.CreateMap<IPlayer, GameOnlineGrpc.Player>();
-            this.CreateMap<IGameData, GameOnlineGrpc.Game>();
+            this.CreateMap<IPawnHistory, GameOnlineGrpc.PawnHistory>();
+            this.CreateMap<IGameData, GameOnlineGrpc.GameData>().ConvertUsing(typeof(IGameDataToGameGrpcConverter));
 
-
-
+            /*
+            this.CreateMap(typeof(IEnumerable<>), typeof(RepeatedField<>)).ConvertUsing(typeof(EnumerableToRepeatedFieldTypeConverter<,>));
+            this.CreateMap(typeof(RepeatedField<>), typeof(List<>)).ConvertUsing(typeof(RepeatedFieldToListTypeConverter<,>));
+            */
 
             this.CreateMap<UserGrpc.UserResponse, UserResponse>();
             this.CreateMap<UserGrpc.ServiceResponse, ServiceResponse>();
             this.CreateMap<Registration, UserGrpc.RegistrationRequest>();
 
-            /*
-
-            this.CreateMapTwoWay<BgModel.User, User>();
-
-            this.CreateMap<BgShared.IPawn, Pawn>();
-            this.CreateMap<BgShared.IField, Field>();
-            this.CreateMap<BgShared.IBoard, Board>();
-            this.CreateMap<BgShared.IGameData, Game>();
-
-            this.CreateMap<BgModel.Match, Match>()
-                .ForMember(dest => dest.DateEnd, opt => opt.MapFrom(src => src.DateEnd == null ? string.Empty : src.DateEnd.Value.ToShortDateString()))
-                .ForMember(dest => dest.DateStart, opt => opt.MapFrom(src => src.DateStart.ToShortDateString()))
-                //To niechce się załapać
-                //.ForMember(dest => dest.MatchUsers, opt => opt.MapFrom(src => new RepeatedField<User> { Mapper.Map<List<User>>(src.MatchUsers) }))
-                .ForMember(dest => dest.MatchUsers, 
-                    opt => opt.MapFrom(
-                        src => new RepeatedField<User> { src.MatchUsers.Select(s => new User { Email = s.Email, Name = s.Name, UserId = s.UserId }) }));
-
-            this.CreateMap<IGamePlay, GamePlay>();
-            */
         }
     }
 }

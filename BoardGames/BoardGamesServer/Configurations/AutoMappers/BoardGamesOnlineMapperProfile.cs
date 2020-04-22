@@ -17,8 +17,9 @@ namespace BoardGamesServer.Configurations
             this.CreateMap<BgShared.IField, Field>();
             this.CreateMap<BgShared.IBoard, Board>();
             this.CreateMap<BgShared.IPlayer, Player>();
+            this.CreateMap<BgShared.IPawnHistory, PawnHistory>();
 
-            this.CreateMap<BgShared.IGameData, Game>();
+            this.CreateMap<BgShared.IGameData, GameData>();
 
             this.CreateMapTwoWay<BgModel.User, User>();
             this.CreateMapTwoWay<BgModel.MatchUser, MatchUser>();

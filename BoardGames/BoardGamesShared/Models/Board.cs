@@ -1,10 +1,9 @@
-﻿using BoardGames.Extensions;
-using BoardGamesShared.Interfaces;
+﻿using BoardGamesShared.Interfaces;
 using System.Collections.Generic;
 
-namespace BoardGames.Models
+namespace BoardGamesShared.Models
 {
-    internal class BoardModel : IBoard
+    public class Board : IBoard
     {
         public int MaxHeight { get; set; }
         public int MaxWidth { get; set; }
@@ -12,13 +11,9 @@ namespace BoardGames.Models
 	    public int MinWidth { get; set; }
 	    public ICollection<IField> FieldList { get; set; }
 
-        public BoardModel()
+        public Board()
         {
 			FieldList = new List<IField>();
         }
-	    public IBoard Copy()
-	    {
-		    return this.FullCopy<BoardModel>();
-	    }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BoardGames.Extensions;
+﻿using BoardGames.Buliders;
+using BoardGames.Extensions;
 using BoardGames.Interfaces;
 using BoardGames.Kernels;
 using BoardGamesShared.Enums;
@@ -17,54 +18,44 @@ namespace BoardGames.Games.Chess
 	    public IPlayer PlayerTurn { get; set; }
 	    public IList<IPlayer> PlayerList { get; set; }
 	    public IBoard Board { get; set; }
-	    public Action<MessageContents> Alert { get; set; }
-	    public Func<IEnumerable<PawChess>, PawChess> ChosePawUpgrade { get; set; }
+	    public Action<MessageContents> Alert { get; private set; }
+	    public Func<IEnumerable<PawChess>, PawChess> ChosePawUpgrade { get; private set; }
+        public IList<IPawnHistory> PawnHistoriesList { get; set; }
+        public int Turn { get; set; }
 
-	    private readonly List<PawChess> pawToChoseList;
+        private readonly List<PawChess> pawToChoseList;
 
-	    private IEnumerable<PawColors> ColorsInGame => PlayerList.Select(s => s.Color);
-	    private readonly IRulesChess Rules;
+        private IEnumerable<PawColors> colorsInGame;
+	    private IRulesChess Rules;
 
-	    public ChessGame()
+	    public ChessGame(IChessGameBulider bulider) //bulider zajmuje się wszystkim (Oprócz zasad, to jest lokalny twór)
         {
-		    Board = KernelInstance.Get<IBoard>();
-	        Rules = KernelInstance.Get<IRulesChess>(new ConstructorArgument("board", Board));
-			PlayerList = new List<IPlayer>();
-			pawToChoseList = new List<PawChess>(){ PawChess.Bishop, PawChess.Knight, PawChess.Queen, PawChess.Rock };
+            Board = bulider.Board;
+            PlayerList = bulider.PlayerList;
+            PlayerTurn = bulider.PlayerTurn;
+            pawToChoseList = bulider.PawToChoseList;
+            Alert = bulider.Alert;
+            ChosePawUpgrade = bulider.ChosePawUpgrade;
+            PawnHistoriesList = bulider.PawnHistoriesList;
+            Turn = bulider.Turn;
+
+            Rules = new RulesChess(Board, PawnHistoriesList);
+            colorsInGame = PlayerList.Select(s => s.Color);
         }
 
-	    public void StartGame(IEnumerable<IPlayer> playerList)
-	    {
-		    Board.MaxHeight = 8;
-		    Board.MaxWidth = 8;
-		    Board.MinHeight = 1;
-		    Board.MinWidth = 1;
-            Board.SetStartBoard();
-            Rules.SetStartPositionPaws();
-            PlayerList = playerList.ToList(); //Dać walidację?
-			SetStartPlayers();
-	    }
-
-	    private void SetStartPlayers()
+        public void SetStartPositionPaws()
         {
-            bool isNotSetFirstPlayer = PlayerList.All(a => a.Color == PawColors.White)
-                                    || PlayerList.All(a => a.Color == PawColors.Black);
+            Rules.SetStartPositionPaws();
+        }
 
-            if (!isNotSetFirstPlayer)
-            {
-                PlayerTurn = PlayerList.First(f => f.Color == PawColors.White);
-                return;
-            }
 
-            Random rand = new Random();
-
-		    var playerFirst = PlayerList[rand.Next(0, 1)];
-		    var playerSecond = PlayerList.First(f => f != playerFirst);
-
-		    playerFirst.Color = PawColors.White;
-		    playerSecond.Color = PawColors.Black;
-
-		    PlayerTurn = playerFirst;
+        public void StartGame(IEnumerable<IPlayer> playerList)
+	    {
+            //Zastanowić sie z tym
+            Turn = 1;
+            PlayerList = playerList.ToList(); 
+			//SetStartPlayers();
+            colorsInGame = PlayerList.Select(s => s.Color);
         }
 
 	    public IEnumerable<IField> PawnWherCanMove(IField field)
@@ -72,8 +63,8 @@ namespace BoardGames.Games.Chess
 		    return Rules.PawnWherCanMove(field);
 	    }
 
-		//pomyśleć co zwrócić. Myślę że teoretycznie ma to być void
-	    public void PawnMove(IField fieldCurrent, IField fieldNew)
+        //Refaktor, metoda jest już nie czytelna
+        public void PawnMove(IField fieldCurrent, IField fieldNew) 
 	    {
 		    bool canPlayerPlayThisPaw = fieldCurrent.Pawn.Color == PlayerTurn.Color;
 		    if (!canPlayerPlayThisPaw)
@@ -88,29 +79,60 @@ namespace BoardGames.Games.Chess
 			    return;
 		    }
 
-			//Pomyśl. Zamisat mieć dwie moetody, gdzie szachmat musi wywolać szach. Przez co wołamy dwa razy tą samą metodę
-			//Lepiej było by sprawdzić czy jest szach, zanotować tą informację (np. w Enum?), a potem sprawdzić czy jest szachmat.
+            //Pomyśl. Zamisat mieć dwie moetody, gdzie szachmat musi wywolać szach. Przez co wołamy dwa razy tą samą metodę
+            //Lepiej było by sprawdzić czy jest szach, zanotować tą informację (np. w Enum?), a potem sprawdzić czy jest szachmat.
 
-		    PawColors? colorInIntreaction = Rules.IsCheckmateOnColor(ColorsInGame);
-		    if (colorInIntreaction.HasValue)
-		    {
-			    Alert(MessageContents.Checkmate);
-			    return;
+            if(CheckGameStatus())
+            {
+                return;
             }
 
-		    colorInIntreaction = Rules.IsCheckOnColor(ColorsInGame);
-		    if (colorInIntreaction.HasValue)
-		    {
-			    Alert(MessageContents.Check);
-		    }
 
             if (Rules.IsPawnUpgrade(fieldNew))
             {
-	            PawChess pawChosed = ChosePawUpgrade(pawToChoseList);
-	            fieldNew.Pawn.Type = (PawType)pawChosed;
+                PawChess pawChosed = ChosePawUpgrade(pawToChoseList);
+                fieldNew.Pawn.Type = (PawType)pawChosed;
             }
 
-		    PlayerTurn = PlayerList.FirstOrDefault(p => p != PlayerTurn);
+            //Przenieść do zasad?
+            /*
+            IPawnHistory history = KernelInstance.Get<IPawnHistory>();
+            history.Turn = Turn;
+            history.PreviusFiledID = fieldCurrent.ID;
+            history.CurrentFiledID = fieldNew.ID;
+            history.PawID = fieldNew.Pawn.ID;
+
+            PawnHistoriesList.Add(history); //Myśę że można by zrobić extensiona
+            */
+
+            Turn++;
+            PlayerTurn = PlayerList.First(p => p.ID != PlayerTurn.ID);
 	    }
+
+        public bool CheckGameStatus()
+        {
+            PawColors? colorInIntreaction = Rules.IsCheckmateOnColor(colorsInGame);
+            if (colorInIntreaction.HasValue)
+            {
+                if (colorInIntreaction.Value == PawColors.White)
+                {
+                    Alert(MessageContents.WinWhite);
+                }
+                else
+                {
+                    Alert(MessageContents.WinBlack);
+                }
+
+                return true;
+            }
+
+            colorInIntreaction = Rules.IsCheckOnColor(colorsInGame);
+            if (colorInIntreaction.HasValue)
+            {
+                Alert(MessageContents.Check);
+            }
+
+            return false;
+        }
     }
 }

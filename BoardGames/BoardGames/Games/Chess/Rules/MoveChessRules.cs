@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace BoardGames.Games.Chess.Rules
 {
-    internal class MoveChessRules: IMoveRule
+    internal class MoveChessRules//: IMoveRule
     {
 	    private readonly IBoard board;
 
@@ -19,16 +19,16 @@ namespace BoardGames.Games.Chess.Rules
         public QueenRules QueenRules { get; }
         public RookRules RookRules { get; }
 
-        public MoveChessRules(IBoard board, Func<ILastMove> getLastMove)
+        public MoveChessRules(IBoard board, IList<IPawnHistory> pawnHistoriesList)
 	    {
 		    this.board = board;
 
-		    PawnRules = new PawnRules(board, getLastMove);
+		    PawnRules = new PawnRules(board, pawnHistoriesList);
 		    BishopRules = new BishopRules(board);
 		    KnightRules = new KnightRules(board);
 		    QueenRules = new QueenRules(board);
 		    RookRules = new RookRules(board);
-		    KingRules = new KingRules(board);
+		    KingRules = new KingRules(board, pawnHistoriesList, WhereCanBeat);
         }
 
 	    public IEnumerable<IField> WhereCanMove(IField field)
@@ -51,40 +51,61 @@ namespace BoardGames.Games.Chess.Rules
 		    }
         }
 
-	    public IEnumerable<IField> WhereEnemyCanMove(PawColors youColor)
+        public IEnumerable<IField> WhereCanBeat(IField field)
+        {
+            if (field.Pawn == null)
+            {
+                return new List<IField>();
+            }
+
+            switch (field.Pawn.Type)
+            {
+                case PawType.PawnChess: return PawnRules.WhereCanBeat(field);
+                case PawType.BishopChess: return BishopRules.WhereCanMove(field);
+                case PawType.KingChess: return KingRules.WhereCanBeat(field);
+                case PawType.KnightChess: return KnightRules.WhereCanMove(field);
+                case PawType.QueenChess: return QueenRules.WhereCanMove(field);
+                case PawType.RockChess: return RookRules.WhereCanMove(field);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public IEnumerable<IField> WhereEnemyCanMove(PawColors youColor)
 	    {
 		    var enemyPawsList = board.FieldList.Where(w => w.Pawn != null && w.Pawn.Color != youColor);
 
 		    List<IField> whereEnenymCanMoveList = enemyPawsList
-		                                          .Where(w => w.Pawn.Type != PawType.PawnChess)
-                                                  .SelectMany(WhereCanMove)
+                                                  .SelectMany(WhereCanBeat)
 		                                          .Distinct()
 		                                          .ToList();
-
-		    var pawList = enemyPawsList.Where(w => w.Pawn.Type == PawType.PawnChess);
-
-			foreach (IField field in pawList)
-			{
-			    whereEnenymCanMoveList.AddRange(PawnRules.WhereCanBeat(field));
-			}
 
 		    return whereEnenymCanMoveList;
 	    }
 
         public void SetStartPositionOnBoard()
 	    {
-		    BishopRules.SetStartPositionOnBoard();
-		    KingRules.SetStartPositionOnBoard();
-		    KnightRules.SetStartPositionOnBoard();
-		    PawnRules.SetStartPositionOnBoard();
-		    QueenRules.SetStartPositionOnBoard();
-		    RookRules.SetStartPositionOnBoard();
+            int idIncrementation = 0;
+
+            BishopRules.SetStartPositionOnBoard(ref idIncrementation);
+		    KingRules.SetStartPositionOnBoard(ref idIncrementation);
+		    KnightRules.SetStartPositionOnBoard(ref idIncrementation);
+		    PawnRules.SetStartPositionOnBoard(ref idIncrementation);
+		    QueenRules.SetStartPositionOnBoard(ref idIncrementation);
+		    RookRules.SetStartPositionOnBoard(ref idIncrementation);
         }
 
 	    public bool IsColorHaveCheck(PawColors color)
 	    {
 		    IField kingPosition = board.FieldList.First(f => f.Pawn?.Color == color && f.Pawn?.Type == PawType.KingChess);
-		    return WhereEnemyCanMove(color).InThisSamePosition(kingPosition) != null;
+            return IsColorHaveCheck(color, kingPosition);
 	    }
+
+        //Test
+        public bool IsColorHaveCheck(PawColors color, IField kingPosition)
+        {
+            return WhereEnemyCanMove(color).InThisSamePosition(kingPosition) != null;
+        }
+        
     }
 }

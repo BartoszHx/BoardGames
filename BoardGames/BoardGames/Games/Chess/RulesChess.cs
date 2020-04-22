@@ -12,15 +12,17 @@ namespace BoardGames.Games.Chess
     internal class RulesChess : IRulesChess
     {
 	    private readonly IBoard board;
-	    public ILastMove LastMove { get; set; }
 
 	    private readonly MoveChessRules MoveRules;
+        private readonly IList<IPawnHistory> pawnHistoriesList;
 
-	    public RulesChess(IBoard board)
+
+        public RulesChess(IBoard board, IList<IPawnHistory> pawnHistoriesList)
 	    {
 		    this.board = board;
-		    LastMove = null;
-			MoveRules = new MoveChessRules(board, () => LastMove);
+            this.pawnHistoriesList = pawnHistoriesList;
+            MoveRules = new MoveChessRules(board, this.pawnHistoriesList);
+            
         }
 
         public IEnumerable<IField> PawnWherCanMove(IField field)
@@ -35,32 +37,52 @@ namespace BoardGames.Games.Chess
 	        return wherCanMoveList;
         }
 
-	    public IEnumerable<IField> MoveWithoutCheck(IField fieldStart, IEnumerable<IField> fieldList)
+        public IEnumerable<IField> PawnWherCanBeat(IField field)
+        {
+            if (field.Pawn == null)
+            {
+                return new List<IField>();
+            }
+
+            IEnumerable<IField> wherCanMoveList = MoveRules.WhereCanBeat(field);
+            wherCanMoveList = MoveWithoutCheck(field, wherCanMoveList);
+            return wherCanMoveList;
+        }
+
+	    public IEnumerable<IField> MoveWithoutCheck(IField fieldStart, IEnumerable<IField> fieldList) // Na nowo to ogarnąć
 	    {
-		    IBoard futureBoard = board.Copy();
-            MoveChessRules futureMoveChees = new MoveChessRules(futureBoard, () => LastMove);
+            //Próba 1. Działanie na orginale
+            List<IField> toRemoveList = new List<IField>();
+            IPawn pawnStart = fieldStart.Pawn;
+            fieldStart.Pawn = null;
 
-		    futureBoard.FieldList.InThisSamePosition(fieldStart).Pawn = null;
 
-		    List<IField> toRemoveList = new List<IField>();
+            foreach (IField field in fieldList)
+            {
+                IField fieldBoard = board.FieldList.InThisSamePosition(field);
+                IPawn fieldBoardPaw = fieldBoard.Pawn;
+                fieldBoard.Pawn = pawnStart;
 
-		    foreach (IField field in fieldList)
-		    {
-			    IField fieldBoard = futureBoard.FieldList.InThisSamePosition(field);
-			    IPawn fieldBoardPaw = fieldBoard.Pawn;
-			    fieldBoard.Pawn = fieldStart.Pawn;
+                bool canBeCheck = MoveRules.IsColorHaveCheck(pawnStart.Color);
 
-			    bool canBeCheck = futureMoveChees.IsColorHaveCheck(fieldStart.Pawn.Color);
                 if (canBeCheck)
-			    {
-				    toRemoveList.Add(field);
-			    }
+                {
+                    toRemoveList.Add(field);
+                }
 
-			    fieldBoard.Pawn = fieldBoardPaw;
-		    }
+                fieldBoard.Pawn = fieldBoardPaw;
+            }
 
-		    return fieldList.Where(w => toRemoveList.InThisSamePosition(w) == null);
-	    }
+            fieldStart.Pawn = pawnStart;
+
+            return fieldList.Where(w => toRemoveList.InThisSamePosition(w) == null);
+        }
+
+        public bool IsColorHaveCheck(PawColors color)
+        {
+            IField kingPosition = board.FieldList.First(f => f.Pawn?.Color == color && f.Pawn?.Type == PawType.KingChess);
+            return MoveRules.WhereEnemyCanMove(color).InThisSamePosition(kingPosition) != null;
+        }
 
         public bool PawnMove(IField fieldOld, IField fieldNew)
 	    {
@@ -69,11 +91,11 @@ namespace BoardGames.Games.Chess
 		    {
                 return false;
 		    }
-
+            //Tu zrobić refaktor, nie ma być IF
 		    if (fieldOld.Pawn.Type == PawType.KingChess)
 		    {
 				MoveRules.KingRules.DoCastlingMove(fieldOld,fieldNew);
-			    MoveRules.KingRules.AddKingsMove(fieldOld);
+                MoveRules.KingRules.DoMove(fieldOld);
 		    }
 
 		    if (fieldOld.Pawn.Type == PawType.PawnChess)
@@ -83,11 +105,6 @@ namespace BoardGames.Games.Chess
 
 		    fieldNew.Pawn = fieldOld.Pawn;
 			fieldOld.Pawn = null;
-
-            LastMove = KernelInstance.Get<ILastMove>();
-            LastMove.OldPosition = fieldOld;
-            LastMove.NewPosition = fieldNew;
-            LastMove.Pawn = fieldNew.Pawn;
 
             return true;//Czy potrzebne jest to?
 	    }
@@ -101,6 +118,7 @@ namespace BoardGames.Games.Chess
 	    {
 		    return MoveRules.PawnRules.IsPawnUpgrade(field);
 	    }
+
         //Jest szach
 		//Podejście - Sprawdzamy, cz po ruchu danego pionka, jest szach
         public PawColors? IsCheckOnColor(IEnumerable<PawColors> colorList)

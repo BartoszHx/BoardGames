@@ -8,6 +8,7 @@ namespace BoardGamesShared.Interfaces
 	    void StartGame(IEnumerable<IPlayer> playerList);
 	    IEnumerable<IField> PawnWherCanMove(IField field);
 	    void PawnMove(IField fieldOld, IField fieldNew);
-		Action<Enums.MessageContents> Alert { get; set; }
+		Action<Enums.MessageContents> Alert { get; } //Pomyśleć
+        bool CheckGameStatus(); //Pomyśleć
     }
 }

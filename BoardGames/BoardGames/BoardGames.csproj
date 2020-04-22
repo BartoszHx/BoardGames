@@ -11,6 +11,8 @@
     <AssemblyName>BoardGames</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,24 +51,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buliders\CheckerGameBulider.cs" />
+    <Compile Include="Buliders\ChessBoardBulider.cs" />
+    <Compile Include="Buliders\ChessGameBulider.cs" />
+    <Compile Include="Buliders\ChessGameStandardBulider.cs" />
     <Compile Include="Extensions\BoardExtension.cs" />
     <Compile Include="Extensions\FieldExtension.cs" />
-    <Compile Include="Factories\GameFactory.cs" />
     <Compile Include="Games\Checkers\RulesChecker.cs" />
     <Compile Include="Games\Checkers\Rules\QueenRules.cs" />
     <Compile Include="Games\Checkers\Rules\StandardCheckersMoveRules.cs" />
-    <Compile Include="Interfaces\IGameBulider.cs" />
+    <Compile Include="Games\Chess\Rules\CastlingCheckProgres.cs" />
+    <Compile Include="Games\Chess\Rules\CastlingRules.cs" />
+    <Compile Include="Interfaces\IChessGameBulider.cs" />
     <Compile Include="Kernels\BoardGameModule.cs" />
     <Compile Include="Kernels\KernelsInstance.cs" />
-    <Compile Include="Models\PawModel.cs" />
     <Compile Include="Games\Chess\Rules\MoveChessRules.cs" />
     <Compile Include="Games\StandardMoveRules.cs" />
     <Compile Include="Games\Chess\RulesChess.cs" />
     <Compile Include="Interfaces\IMoveRule.cs" />
     <Compile Include="Interfaces\IRules.cs" />
     <Compile Include="Games\Checkers\Rules\PawnRules.cs" />
-    <Compile Include="Models\BoardModel.cs" />
-    <Compile Include="Models\FieldModel.cs" />
     <Compile Include="Games\Chess\Rules\BishopRules.cs" />
     <Compile Include="Games\Chess\Rules\KingRules.cs" />
     <Compile Include="Games\Chess\Rules\KnightRules.cs" />
@@ -75,7 +79,6 @@
     <Compile Include="Games\Chess\Rules\RookRules.cs" />
     <Compile Include="Games\Checkers\CheckerGame.cs" />
     <Compile Include="Games\Chess\ChessGame.cs" />
-    <Compile Include="Models\LastMoveModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,10 +86,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BoardGamesShared\BoardGamesShared.csproj">
-      <Project>{3873864b-a1f6-4dee-bc8d-34bb7cfecb74}</Project>
+      <Project>{b3cf8bab-d033-4b49-a351-77a14b41b087}</Project>
       <Name>BoardGamesShared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

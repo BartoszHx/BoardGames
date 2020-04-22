@@ -1,7 +1,6 @@
 ﻿using BoardGameDatabase.Interfaces;
 using BoardGamesOnline.Models;
 using BoardGamesOnlineTest.Helpers;
-using BoardGamesShared.Enums;
 using Moq;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
@@ -12,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Match = BoardGamesOnline.Models.Match;
 using DbModels = BoardGameDatabase.Models.Entites;
+using BoardGamesShared.Enums;
 
 namespace BoardGamesOnlineTest.Services
 {

@@ -12,8 +12,8 @@ namespace BoardGamesWPF.ViewModels
 
         public IField Field { get; private set; }
 
-        public int Heigh => 9 - Field.Heigh; // Pomyśleć nad tym
-        public int Width => Field.Width;
+        public int HeighView => 9 - Field.Heigh; // Pomyśleć nad tym
+        public int WidthView => Field.Width;
         public string Name => getName();
         public Brush Color => getColor();
 
@@ -21,8 +21,10 @@ namespace BoardGamesWPF.ViewModels
         public bool CanMove
         {
             get => canMove;
-            set { canMove = value; OnPropertyChanged(); OnPropertyChanged(nameof(Color)); }
+            set { canMove = value; OnPropertyChanged(nameof(Color)); }
         }
+
+        //public IPawn Pawn { get => Field.Pawn; set { Field.Pawn = value; OnPropertyChanged(nameof(Pawn)); } }
 
         #endregion
 
@@ -30,7 +32,7 @@ namespace BoardGamesWPF.ViewModels
 
         public FieldViewModel(IField field)
         {
-            this.Field = field;
+            Field = field;
         }
 
         #endregion
@@ -39,8 +41,8 @@ namespace BoardGamesWPF.ViewModels
 
         public void AllOnPropertyChanged()
         {
-            OnPropertyChanged(nameof(Heigh));
-            OnPropertyChanged(nameof(Width));
+            OnPropertyChanged(nameof(HeighView));
+            OnPropertyChanged(nameof(WidthView));
             OnPropertyChanged(nameof(CanMove));
             OnPropertyChanged(nameof(Name));
             OnPropertyChanged(nameof(Color));
@@ -60,7 +62,7 @@ namespace BoardGamesWPF.ViewModels
                 case PawType.QueenChess: return "Królowa";
                 case PawType.RockChess: return "Wieża";
                 case PawType.PawnCheckers: return "Pionek";
-                case PawType.QueenCheckers: return "Queen";
+                case PawType.QueenCheckers: return "Królowa";
                 default: return null;
             }
         }
@@ -74,6 +76,11 @@ namespace BoardGamesWPF.ViewModels
                 return new SolidColorBrush(Colors.Wheat);
 
             return new SolidColorBrush(Field.Pawn.Color == PawColors.Black ? Colors.DarkGray : Colors.White);
+        }
+
+        public override string ToString()
+        {
+            return string.Format($"H: {HeighView} W: {WidthView} {Name} {Color}");
         }
         #endregion
     }

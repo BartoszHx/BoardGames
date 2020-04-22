@@ -75,7 +75,7 @@
       <Name>BoardGamesDatabase</Name>
     </ProjectReference>
     <ProjectReference Include="..\BoardGamesShared\BoardGamesShared.csproj">
-      <Project>{3873864b-a1f6-4dee-bc8d-34bb7cfecb74}</Project>
+      <Project>{b3cf8bab-d033-4b49-a351-77a14b41b087}</Project>
       <Name>BoardGamesShared</Name>
     </ProjectReference>
   </ItemGroup>

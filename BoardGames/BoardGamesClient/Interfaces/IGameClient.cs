@@ -10,9 +10,12 @@ namespace BoardGamesClient.Interfaces
 {
     public interface IGameClient
     {
-        GamePlay GamePlay { get; } //Zastanowić się nad tym
+        IGameData GameData { get; }
+        Match MatchData { get; }
         User User { get; }
-        Task SearchOpponentAsync(GameTypes gametype);
+        GameTypes GameType { get; }
+        Task SearchOpponentAsync();
+        Task PlayMatchAsync();
         void CancelSearchOpponent();
         IEnumerable<IField> PawnWherCanMove(IField field);
         void PawnMove(IField fieldOld, IField fieldNew);

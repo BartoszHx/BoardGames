@@ -7,12 +7,18 @@ namespace BoardGamesWPF.ViewModels.Chess
     public class GameChessViewModel : GameViewModel
     {
         protected IChessGame ChessGame { get { return (IChessGame)base.Game; } }
-
+        
+        //Solo
         public GameChessViewModel()
-            :base(GameTypes.Chess)
         {
-	        ChessGame.ChosePawUpgrade = PawnUpgradeWindow;
+            var game = new BoardGames.Buliders.ChessGameBulider()
+                .SetAlertMessage(Alert)
+                .SetChosePawUpgradeFunction(PawnUpgradeWindow)
+                .Bulid();
+
+            base.Load(game);
         }
+        
 
         private PawChess PawnUpgradeWindow(IEnumerable<PawChess> pawnToChoseList)
         {

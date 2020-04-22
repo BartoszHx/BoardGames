@@ -2,6 +2,7 @@
 using BoardGames.Interfaces;
 using BoardGames.Models;
 using BoardGamesShared.Interfaces;
+using BoardGamesShared.Models;
 using Ninject.Modules;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,10 @@ namespace BoardGames.Kernels
     {
         public override void Load()
         {
-            Bind<IBoard>().To<BoardModel>();
-            Bind<IField>().To<FieldModel>();
-            Bind<IPawn>().To<PawModel>();
-            Bind<ILastMove>().To<LastMoveModel>();
+            Bind<IBoard>().To<Board>();
+            Bind<IField>().To<Field>();
+            Bind<IPawn>().To<Pawn>();
+            Bind<IPawnHistory>().To<PawnHistory>();
             Bind<IRulesChess>().To<RulesChess>();
         }
     }

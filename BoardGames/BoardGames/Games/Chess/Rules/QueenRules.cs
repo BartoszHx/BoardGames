@@ -25,7 +25,7 @@ namespace BoardGames.Games.Chess.Rules
 
 		    return fieldList;
         }
-	    public void SetStartPositionOnBoard()
+	    public void SetStartPositionOnBoard(ref int idIncrementation)
 	    {
 		    IEnumerable<IField> whereSetPawn = board.FieldList.Where(w => (w.Width == 5 && w.Heigh == 8) || (w.Width == 4 && w.Heigh == 1));
 		    foreach (IField field in whereSetPawn)
@@ -33,6 +33,7 @@ namespace BoardGames.Games.Chess.Rules
 			    field.Pawn = KernelInstance.Get<IPawn>();
 			    field.Pawn.Type = PawType.QueenChess;
 			    field.Pawn.Color = field.GetPawnStartColor();
+                field.Pawn.ID = ++idIncrementation;
             }
         }
     }

@@ -7,7 +7,7 @@ namespace BoardGamesClient.Models
 {
     public class GamePlay
     {
-        public IGameData Game { get; set; }
+        public IGameData GameData { get; set; }
 
         public Match Match { get; set; }
     }

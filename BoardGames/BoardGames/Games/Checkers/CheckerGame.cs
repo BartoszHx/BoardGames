@@ -1,9 +1,7 @@
-﻿using BoardGames.Extensions;
-using BoardGames.Games.Checkers;
-using BoardGames.Kernels;
+﻿using BoardGames.Buliders;
+using BoardGames.Extensions;
 using BoardGamesShared.Enums;
 using BoardGamesShared.Interfaces;
-using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,28 +13,61 @@ namespace BoardGames.Games.Checkers
 	    public IPlayer PlayerTurn { get; set; }
 	    public IList<IPlayer> PlayerList { get; set; }
 	    public IBoard Board { get; set; }
-	    public Action<MessageContents> Alert { get; set; }
+	    public Action<MessageContents> Alert { get; private set; }
+        public IList<IPawnHistory> PawnHistoriesList { get; set; }
+        public int Turn { get; set; }
 
-	    private RulesChecker Rules; //Poźniej na interface
+        private RulesChecker Rules;
 
-        public CheckerGame()
+        public CheckerGame(CheckerGameBulider bulider)
         {
-	        Board = KernelInstance.Get<IBoard>();
+            Board = KernelInstance.Get<IBoard>();
 			Rules = new RulesChecker(Board);
+            PawnHistoriesList = new List<IPawnHistory>();
+            Alert = bulider.Alert;
         }
 
+        
 	    public void StartGame(IEnumerable<IPlayer> playerList)
 	    {
-		    Board.MaxHeight = 8;
-		    Board.MaxWidth = 8;
-		    Board.MinHeight = 1;
+            Board.MaxHeight = 8;
+            Board.MaxWidth = 8;
+            Board.MinHeight = 1;
 		    Board.MinWidth = 1;
+            Turn = 1;
             Board.SetStartBoard();
             Rules.SetStartPositionOnBoard();
             PlayerList = playerList.ToList();
+            SetColorAndStartPlayer();
         }
 
-	    public IEnumerable<IField> PawnWherCanMove(IField field)
+        //Test
+        /*
+        public void StartGame(IEnumerable<IPlayer> playerList)
+        {
+            Board.MaxHeight = 4;
+            Board.MaxWidth = 4;
+            Board.MinHeight = 1;
+            Board.MinWidth = 1;
+            Board.SetStartBoard();
+            //Rules.SetStartPositionOnBoard();
+
+            var a1 = Board.FieldList.First(p => p.Heigh == 1 && p.Width == 1);
+            a1.Pawn = KernelInstance.Get<IPawn>();
+            a1.Pawn.Type = PawType.PawnCheckers;
+            a1.Pawn.Color = PawColors.White;
+
+            var a2 = Board.FieldList.First(p => p.Heigh == 4 && p.Width == 4);
+            a2.Pawn = KernelInstance.Get<IPawn>();
+            a2.Pawn.Type = PawType.PawnCheckers;
+            a2.Pawn.Color = PawColors.Black;
+
+
+            PlayerList = playerList.ToList();
+            SetColorAndStartPlayer();
+        }*/
+
+        public IEnumerable<IField> PawnWherCanMove(IField field)
 	    {
 		    return field.Pawn != null ? Rules.WherPawnCanMove(field) : new List<IField>();
 	    }
@@ -52,7 +83,7 @@ namespace BoardGames.Games.Checkers
 
             Rules.PawnMove(fieldOld, fieldNew);
 
-	        bool canBeatNextPaw = Rules.BeatMove(fieldNew).Any();
+	        bool canBeatNextPaw = fieldNew.Pawn!= null && Rules.BeatMove(fieldNew).Any();
             if (isBeatMove && canBeatNextPaw)
 	        {
 				return;
@@ -64,19 +95,51 @@ namespace BoardGames.Games.Checkers
 		        fieldNew.Pawn.Type = PawType.QueenCheckers; //Przenieść to do zasad damki?
 	        }
 
-	        if (IsWin(PlayerTurn.Color))
+	        if (CheckGameStatus())
 	        {
-		        Alert(MessageContents.Checkmate); //Zmienić Message
 				return;
 	        }
 
-	        PlayerTurn = PlayerList.FirstOrDefault(p => p != PlayerTurn);
-
+	        PlayerTurn = PlayerList.FirstOrDefault(p => p.ID != PlayerTurn.ID);
         }
 
-	    private bool IsWin(PawColors color)
-	    {
-		    return !Board.FieldList.Any(w => w.Pawn != null && w.Pawn.Color != color);
-	    }
+        public bool CheckGameStatus()
+        { 
+            var boardColorStatus = Board.FieldList.Where(w => w.Pawn != null)
+                .Select(s => s.Pawn.Color)
+                .Distinct();
+
+            bool isEndGame = boardColorStatus.Count() == 1;
+            if(isEndGame)
+            {
+                var pawColorWin = boardColorStatus.First();
+                if(pawColorWin == PawColors.White)
+                {
+                    Alert(MessageContents.WinWhite);
+                }
+                else
+                {
+                    Alert(MessageContents.WinBlack);
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
+        //Do Refaktoryzacji
+        private void SetColorAndStartPlayer()
+        {
+            Random rand = new Random();
+            int chosenOneee = rand.Next(PlayerList.Count);
+
+            var firstPlayer = PlayerList[chosenOneee];
+            firstPlayer.Color = PawColors.White;
+            PlayerTurn = firstPlayer;
+
+            var secendPlayer = PlayerList.First(f => f != firstPlayer);
+            secendPlayer.Color = PawColors.Black;
+        }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace BoardGamesConsoleApp
 {
     class Program
@@ -16,12 +17,9 @@ namespace BoardGamesConsoleApp
 
         static void Main(string[] args)
         {
+            //testc mapper
 
-            var abc = BoardGames.Factories.GameFactory.Create(BoardGamesShared.Enums.GameTypes.Chess);
-            var cba = BoardGames.Factories.GameFactory.Create(BoardGamesShared.Enums.GameTypes.Checkers);
 
-            abc.StartGame(null);
-            cba.StartGame(null);
 
 
             //NormalTest();

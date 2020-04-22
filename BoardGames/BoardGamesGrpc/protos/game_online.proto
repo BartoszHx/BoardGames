@@ -42,15 +42,25 @@ message Player
 
 message Pawn
 {
-	int32 Color = 1;
-	int32 Type = 2;
+	int32 ID = 1;
+	int32 Color = 2;
+	int32 Type = 3;
 }
 
 message Field{
-	int32 Heigh = 1;
-	int32 Width = 2;
-	Pawn Pawn = 3;
+	int32 ID = 1;
+	int32 Heigh = 2;
+	int32 Width = 3;
+	Pawn Pawn = 4;
 } 
+
+message PawnHistory
+{
+	int32 Turn = 1;
+    int32 PawID = 2;
+    int32 PreviusFiledID = 3;
+    int32 CurrentFiledID = 4;
+}
 
 message Board
 {
@@ -80,23 +90,28 @@ message Match
 	repeated MatchUser MatchUsers = 5;
 }
 
-message Game
+message GameData
 {
-	Player PlayerTurn = 1;
-	repeated Player PlayerList = 2;
-	Board Board = 3;
+	int32 Turn = 1;
+	Player PlayerTurn = 2;
+	repeated Player PlayerList = 3;
+	Board Board = 4;
+	repeated PawnHistory PawnHistoriesList = 5;
 }
 
 message GamePlay
 {
-	Game Game = 1; 
+	GameData GameData = 1; 
 	Match Match = 2;
 }
 
+
+
 message PlayMatchRequest
 {
-	int32 UserId = 1;
-	GamePlay GamePlay = 2;
+	string GuidID = 1;
+	int32 UserId = 2;
+	GamePlay GamePlay = 3;
 }
 
 service GameOnlineService {

@@ -4,9 +4,9 @@ using System.Text;
 using BoardGamesShared.Enums;
 using BoardGamesShared.Interfaces;
 
-namespace BoardGamesClient.Models
+namespace BoardGamesShared.Models
 {
-    internal class Player : IPlayer
+    public class Player : IPlayer
     {
         public int ID { get; set; }
 

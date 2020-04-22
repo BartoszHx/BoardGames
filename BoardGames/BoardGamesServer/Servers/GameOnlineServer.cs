@@ -13,6 +13,8 @@ using Google.Protobuf.Collections;
 using Match = BoardGamesGrpc.GameOnlines.Match;
 using User = BoardGamesOnline.Models.User;
 using BoardGamesServer.Configurations;
+using BoardGamesServer.Models;
+using System.Linq;
 
 namespace BoardGamesServer
 {
@@ -20,12 +22,11 @@ namespace BoardGamesServer
     {
         private IGameOnlineService service;
 
-        private static HashSet<IServerStreamWriter<GamePlay>> responseStreamList = new HashSet<IServerStreamWriter<GamePlay>>();
+        private static readonly HashSet<PlayMatchResponseStream> responseStreamList = new HashSet<PlayMatchResponseStream>();
 
         public GameOnlineServer()
         {
             this.service = StaticKernel.Get<IGameOnlineService>();
-            responseStreamList = new HashSet<IServerStreamWriter<GamePlay>>();
             this.ChoosePlayersToPlayAsync(); // Nie podoba mi się to tutaj 
         }
 
@@ -36,16 +37,27 @@ namespace BoardGamesServer
 
         public override async Task PlayMatch(IAsyncStreamReader<PlayMatchRequest> requestStream, IServerStreamWriter<GamePlay> responseStream, ServerCallContext context)
         {
-            responseStreamList.Add(responseStream);
-
-            while (await requestStream.MoveNext(CancellationToken.None))
+            try
             {
-                var gamePlayFromClient = requestStream.Current;
-                
-                foreach (var stream in responseStreamList)
+                string guidID = context.RequestHeaders.First(f => f.Key == "guidid").Value;
+
+                PlayMatchResponseStream playMatchResponseStream = new PlayMatchResponseStream { GuidID = guidID };
+                playMatchResponseStream.ResponseStream = responseStream;
+                responseStreamList.Add(playMatchResponseStream);
+
+                while (await requestStream.MoveNext(CancellationToken.None))
                 {
-                    await stream.WriteAsync(gamePlayFromClient.GamePlay);
+                    var gamePlayFromClient = requestStream.Current;
+
+                    foreach (var stream in responseStreamList.Where(w=> w.GuidID == guidID).Select(s=> s.ResponseStream))
+                    {
+                        await stream.WriteAsync(gamePlayFromClient.GamePlay);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
         

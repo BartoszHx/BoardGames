@@ -12,6 +12,6 @@ namespace BoardGamesClient.Models
         public DateTime DateEnd { get; set; }
         //google.protobuf.Timestamp DateStart = 3;
         //google.protobuf.Timestamp DateEnd = 4;
-        public List<User> MatchUsers { get; set; }
+        public List<MatchUser> MatchUsers { get; set; } 
     }
 }

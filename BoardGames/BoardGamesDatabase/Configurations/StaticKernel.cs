@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using BoardGameDatabase.Configurations;
 using Ninject;
 using Ninject.Parameters;
 
@@ -12,8 +13,9 @@ namespace BoardGameDatabase
 
         public StaticKernel()
         {
-            kernelGet = new StandardKernel();
-            kernelGet.Load(Assembly.GetExecutingAssembly());
+            //kernelGet = new StandardKernel();
+            kernelGet = new StandardKernel(new Binding());
+            //kernelGet.Load(Assembly.GetExecutingAssembly());
         }
 
         public static T Get<T>()

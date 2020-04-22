@@ -21,7 +21,7 @@ namespace BoardGames.Games.Chess.Rules
 	    {
 		    return StandardMoveRules.MoveAllCross(field, board, board.MaxHeight);
 	    }
-	    public void SetStartPositionOnBoard()
+	    public void SetStartPositionOnBoard(ref int idIncrementation)
 	    {
 		    IEnumerable<IField> whereSetPawn = board.GetFieldListInEndHeigh().Where(w => w.Width == 3 || w.Width == 6);
 		    foreach (IField field in whereSetPawn)
@@ -29,7 +29,9 @@ namespace BoardGames.Games.Chess.Rules
 			    field.Pawn = KernelInstance.Get<IPawn>();
 			    field.Pawn.Type = PawType.BishopChess;
                 field.Pawn.Color = field.GetPawnStartColor();
-		    }
+                field.Pawn.ID = ++idIncrementation;
+
+            }
 	    }
     }
 }

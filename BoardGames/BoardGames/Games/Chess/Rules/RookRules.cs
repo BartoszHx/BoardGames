@@ -22,7 +22,7 @@ namespace BoardGames.Games.Chess.Rules
 	    {
 		    return StandardMoveRules.MoveHorizontalVertical(field, board, board.MaxHeight);
         }
-	    public void SetStartPositionOnBoard()
+	    public void SetStartPositionOnBoard(ref int idIncrementation)
 	    {
 		    IEnumerable<IField> whereSetPawn = board.GetFieldListInEndHeigh().Where(w => w.Width == 1 || w.Width == 8);
 		    foreach (IField field in whereSetPawn)
@@ -30,6 +30,7 @@ namespace BoardGames.Games.Chess.Rules
 			    field.Pawn = KernelInstance.Get<IPawn>();
 			    field.Pawn.Type = PawType.RockChess;
 			    field.Pawn.Color = field.GetPawnStartColor();
+                field.Pawn.ID = ++idIncrementation;
             }
 	    }
     }

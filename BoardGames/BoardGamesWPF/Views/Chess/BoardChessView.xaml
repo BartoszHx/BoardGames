@@ -17,8 +17,8 @@
         <ItemsControl.ItemTemplate>
             <DataTemplate>
                 <Button 
-                    Grid.Row="{Binding Heigh}"
-                    Grid.Column="{Binding Width}"
+                    Grid.Row="{Binding HeighView}"
+                    Grid.Column="{Binding WidthView}"
                     Width="30"
                     Height="30"
                     Content="{Binding Name}"

@@ -35,39 +35,44 @@ namespace BoardGamesGrpc.GameOnlines {
             "bmNlbFNlYXJjaE9wcG9uZW50UmVzcG9ucxI7CgdSZXNwb25zGAEgASgLMiou",
             "Qm9hcmRHYW1lc0dycGMuU2hhcmVkTW9kZWwuU2VydmVyUmVzcG9uc2UiMQoG",
             "UGxheWVyEgoKAklEGAEgASgFEgwKBE5hbWUYAiABKAkSDQoFQ29sb3IYAyAB",
-            "KAUiIwoEUGF3bhINCgVDb2xvchgBIAEoBRIMCgRUeXBlGAIgASgFIlUKBUZp",
-            "ZWxkEg0KBUhlaWdoGAEgASgFEg0KBVdpZHRoGAIgASgFEi4KBFBhd24YAyAB",
-            "KAsyIC5Cb2FyZEdhbWVzR3JwYy5HYW1lT25saW5lcy5QYXduIocBCgVCb2Fy",
-            "ZBIRCglNYXhIZWlnaHQYASABKAUSEAoITWF4V2lkdGgYAiABKAUSEQoJTWlu",
-            "SGVpZ2h0GAMgASgFEhAKCE1pbldpZHRoGAQgASgFEjQKCUZpZWxkTGlzdBgF",
-            "IAMoCzIhLkJvYXJkR2FtZXNHcnBjLkdhbWVPbmxpbmVzLkZpZWxkIqABCglN",
-            "YXRjaFVzZXISEwoLTWF0Y2hVc2VySWQYASABKAUSDwoHTWF0Y2hJZBgCIAEo",
-            "BRIuCgRVc2VyGAMgASgLMiAuQm9hcmRHYW1lc0dycGMuU2hhcmVkTW9kZWwu",
-            "VXNlchI9CgtNYXRjaFJlc3VsdBgEIAEoDjIoLkJvYXJkR2FtZXNHcnBjLkdh",
-            "bWVPbmxpbmVzLk1hdGNoUmVzdWx0cyKJAQoFTWF0Y2gSDwoHTWF0Y2hJZBgB",
-            "IAEoBRIQCghHYW1lVHlwZRgCIAEoBRIRCglEYXRlU3RhcnQYAyABKAkSDwoH",
-            "RGF0ZUVuZBgEIAEoCRI5CgpNYXRjaFVzZXJzGAUgAygLMiUuQm9hcmRHYW1l",
-            "c0dycGMuR2FtZU9ubGluZXMuTWF0Y2hVc2VyIqgBCgRHYW1lEjYKClBsYXll",
-            "clR1cm4YASABKAsyIi5Cb2FyZEdhbWVzR3JwYy5HYW1lT25saW5lcy5QbGF5",
-            "ZXISNgoKUGxheWVyTGlzdBgCIAMoCzIiLkJvYXJkR2FtZXNHcnBjLkdhbWVP",
-            "bmxpbmVzLlBsYXllchIwCgVCb2FyZBgDIAEoCzIhLkJvYXJkR2FtZXNHcnBj",
-            "LkdhbWVPbmxpbmVzLkJvYXJkImwKCEdhbWVQbGF5Ei4KBEdhbWUYASABKAsy",
-            "IC5Cb2FyZEdhbWVzR3JwYy5HYW1lT25saW5lcy5HYW1lEjAKBU1hdGNoGAIg",
-            "ASgLMiEuQm9hcmRHYW1lc0dycGMuR2FtZU9ubGluZXMuTWF0Y2giWgoQUGxh",
-            "eU1hdGNoUmVxdWVzdBIOCgZVc2VySWQYASABKAUSNgoIR2FtZVBsYXkYAiAB",
-            "KAsyJC5Cb2FyZEdhbWVzR3JwYy5HYW1lT25saW5lcy5HYW1lUGxheSpXCgxN",
-            "YXRjaFJlc3VsdHMSCAoETnVsbBAAEg4KCkluUHJvZ3Jlc3MQARIHCgNXaW4Q",
-            "AhIICgRMb3NzEAMSCAoERHJhdxAEEhAKDERpc2Nvbm5lY3RlZBAFMvsCChFH",
-            "YW1lT25saW5lU2VydmljZRJ2Cg5TZWFyY2hPcHBvbmVudBIxLkJvYXJkR2Ft",
-            "ZXNHcnBjLkdhbWVPbmxpbmVzLlNlYXJjaE9wcG9uZW50UmVxdWVzdBoxLkJv",
-            "YXJkR2FtZXNHcnBjLkdhbWVPbmxpbmVzLlNlYXJjaE9wcG9uZW50UmVzcG9u",
-            "cxKIAQoUQ2FuY2VsU2VhcmNoT3Bwb25lbnQSNy5Cb2FyZEdhbWVzR3JwYy5H",
-            "YW1lT25saW5lcy5DYW5jZWxTZWFyY2hPcHBvbmVudFJlcXVlc3QaNy5Cb2Fy",
-            "ZEdhbWVzR3JwYy5HYW1lT25saW5lcy5DYW5jZWxTZWFyY2hPcHBvbmVudFJl",
-            "c3BvbnMSYwoJUGxheU1hdGNoEiwuQm9hcmRHYW1lc0dycGMuR2FtZU9ubGlu",
-            "ZXMuUGxheU1hdGNoUmVxdWVzdBokLkJvYXJkR2FtZXNHcnBjLkdhbWVPbmxp",
-            "bmVzLkdhbWVQbGF5KAEwAUIdqgIaQm9hcmRHYW1lc0dycGMuR2FtZU9ubGlu",
-            "ZXNiBnByb3RvMw=="));
+            "KAUiLwoEUGF3bhIKCgJJRBgBIAEoBRINCgVDb2xvchgCIAEoBRIMCgRUeXBl",
+            "GAMgASgFImEKBUZpZWxkEgoKAklEGAEgASgFEg0KBUhlaWdoGAIgASgFEg0K",
+            "BVdpZHRoGAMgASgFEi4KBFBhd24YBCABKAsyIC5Cb2FyZEdhbWVzR3JwYy5H",
+            "YW1lT25saW5lcy5QYXduIloKC1Bhd25IaXN0b3J5EgwKBFR1cm4YASABKAUS",
+            "DQoFUGF3SUQYAiABKAUSFgoOUHJldml1c0ZpbGVkSUQYAyABKAUSFgoOQ3Vy",
+            "cmVudEZpbGVkSUQYBCABKAUihwEKBUJvYXJkEhEKCU1heEhlaWdodBgBIAEo",
+            "BRIQCghNYXhXaWR0aBgCIAEoBRIRCglNaW5IZWlnaHQYAyABKAUSEAoITWlu",
+            "V2lkdGgYBCABKAUSNAoJRmllbGRMaXN0GAUgAygLMiEuQm9hcmRHYW1lc0dy",
+            "cGMuR2FtZU9ubGluZXMuRmllbGQioAEKCU1hdGNoVXNlchITCgtNYXRjaFVz",
+            "ZXJJZBgBIAEoBRIPCgdNYXRjaElkGAIgASgFEi4KBFVzZXIYAyABKAsyIC5C",
+            "b2FyZEdhbWVzR3JwYy5TaGFyZWRNb2RlbC5Vc2VyEj0KC01hdGNoUmVzdWx0",
+            "GAQgASgOMiguQm9hcmRHYW1lc0dycGMuR2FtZU9ubGluZXMuTWF0Y2hSZXN1",
+            "bHRzIokBCgVNYXRjaBIPCgdNYXRjaElkGAEgASgFEhAKCEdhbWVUeXBlGAIg",
+            "ASgFEhEKCURhdGVTdGFydBgDIAEoCRIPCgdEYXRlRW5kGAQgASgJEjkKCk1h",
+            "dGNoVXNlcnMYBSADKAsyJS5Cb2FyZEdhbWVzR3JwYy5HYW1lT25saW5lcy5N",
+            "YXRjaFVzZXIi/gEKCEdhbWVEYXRhEgwKBFR1cm4YASABKAUSNgoKUGxheWVy",
+            "VHVybhgCIAEoCzIiLkJvYXJkR2FtZXNHcnBjLkdhbWVPbmxpbmVzLlBsYXll",
+            "chI2CgpQbGF5ZXJMaXN0GAMgAygLMiIuQm9hcmRHYW1lc0dycGMuR2FtZU9u",
+            "bGluZXMuUGxheWVyEjAKBUJvYXJkGAQgASgLMiEuQm9hcmRHYW1lc0dycGMu",
+            "R2FtZU9ubGluZXMuQm9hcmQSQgoRUGF3bkhpc3Rvcmllc0xpc3QYBSADKAsy",
+            "Jy5Cb2FyZEdhbWVzR3JwYy5HYW1lT25saW5lcy5QYXduSGlzdG9yeSJ0CghH",
+            "YW1lUGxheRI2CghHYW1lRGF0YRgBIAEoCzIkLkJvYXJkR2FtZXNHcnBjLkdh",
+            "bWVPbmxpbmVzLkdhbWVEYXRhEjAKBU1hdGNoGAIgASgLMiEuQm9hcmRHYW1l",
+            "c0dycGMuR2FtZU9ubGluZXMuTWF0Y2giagoQUGxheU1hdGNoUmVxdWVzdBIO",
+            "CgZHdWlkSUQYASABKAkSDgoGVXNlcklkGAIgASgFEjYKCEdhbWVQbGF5GAMg",
+            "ASgLMiQuQm9hcmRHYW1lc0dycGMuR2FtZU9ubGluZXMuR2FtZVBsYXkqVwoM",
+            "TWF0Y2hSZXN1bHRzEggKBE51bGwQABIOCgpJblByb2dyZXNzEAESBwoDV2lu",
+            "EAISCAoETG9zcxADEggKBERyYXcQBBIQCgxEaXNjb25uZWN0ZWQQBTL7AgoR",
+            "R2FtZU9ubGluZVNlcnZpY2USdgoOU2VhcmNoT3Bwb25lbnQSMS5Cb2FyZEdh",
+            "bWVzR3JwYy5HYW1lT25saW5lcy5TZWFyY2hPcHBvbmVudFJlcXVlc3QaMS5C",
+            "b2FyZEdhbWVzR3JwYy5HYW1lT25saW5lcy5TZWFyY2hPcHBvbmVudFJlc3Bv",
+            "bnMSiAEKFENhbmNlbFNlYXJjaE9wcG9uZW50EjcuQm9hcmRHYW1lc0dycGMu",
+            "R2FtZU9ubGluZXMuQ2FuY2VsU2VhcmNoT3Bwb25lbnRSZXF1ZXN0GjcuQm9h",
+            "cmRHYW1lc0dycGMuR2FtZU9ubGluZXMuQ2FuY2VsU2VhcmNoT3Bwb25lbnRS",
+            "ZXNwb25zEmMKCVBsYXlNYXRjaBIsLkJvYXJkR2FtZXNHcnBjLkdhbWVPbmxp",
+            "bmVzLlBsYXlNYXRjaFJlcXVlc3QaJC5Cb2FyZEdhbWVzR3JwYy5HYW1lT25s",
+            "aW5lcy5HYW1lUGxheSgBMAFCHaoCGkJvYXJkR2FtZXNHcnBjLkdhbWVPbmxp",
+            "bmVzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::BoardGamesGrpc.SharedModel.SharedModelReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::BoardGamesGrpc.GameOnlines.MatchResults), }, new pbr::GeneratedClrTypeInfo[] {
@@ -76,14 +81,15 @@ namespace BoardGamesGrpc.GameOnlines {
             new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.CancelSearchOpponentRequest), global::BoardGamesGrpc.GameOnlines.CancelSearchOpponentRequest.Parser, new[]{ "UserId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.CancelSearchOpponentRespons), global::BoardGamesGrpc.GameOnlines.CancelSearchOpponentRespons.Parser, new[]{ "Respons" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.Player), global::BoardGamesGrpc.GameOnlines.Player.Parser, new[]{ "ID", "Name", "Color" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.Pawn), global::BoardGamesGrpc.GameOnlines.Pawn.Parser, new[]{ "Color", "Type" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.Field), global::BoardGamesGrpc.GameOnlines.Field.Parser, new[]{ "Heigh", "Width", "Pawn" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.Pawn), global::BoardGamesGrpc.GameOnlines.Pawn.Parser, new[]{ "ID", "Color", "Type" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.Field), global::BoardGamesGrpc.GameOnlines.Field.Parser, new[]{ "ID", "Heigh", "Width", "Pawn" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.PawnHistory), global::BoardGamesGrpc.GameOnlines.PawnHistory.Parser, new[]{ "Turn", "PawID", "PreviusFiledID", "CurrentFiledID" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.Board), global::BoardGamesGrpc.GameOnlines.Board.Parser, new[]{ "MaxHeight", "MaxWidth", "MinHeight", "MinWidth", "FieldList" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.MatchUser), global::BoardGamesGrpc.GameOnlines.MatchUser.Parser, new[]{ "MatchUserId", "MatchId", "User", "MatchResult" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.Match), global::BoardGamesGrpc.GameOnlines.Match.Parser, new[]{ "MatchId", "GameType", "DateStart", "DateEnd", "MatchUsers" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.Game), global::BoardGamesGrpc.GameOnlines.Game.Parser, new[]{ "PlayerTurn", "PlayerList", "Board" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.GamePlay), global::BoardGamesGrpc.GameOnlines.GamePlay.Parser, new[]{ "Game", "Match" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.PlayMatchRequest), global::BoardGamesGrpc.GameOnlines.PlayMatchRequest.Parser, new[]{ "UserId", "GamePlay" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.GameData), global::BoardGamesGrpc.GameOnlines.GameData.Parser, new[]{ "Turn", "PlayerTurn", "PlayerList", "Board", "PawnHistoriesList" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.GamePlay), global::BoardGamesGrpc.GameOnlines.GamePlay.Parser, new[]{ "GameData", "Match" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::BoardGamesGrpc.GameOnlines.PlayMatchRequest), global::BoardGamesGrpc.GameOnlines.PlayMatchRequest.Parser, new[]{ "GuidID", "UserId", "GamePlay" }, null, null, null)
           }));
     }
     #endregion
@@ -902,6 +908,7 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Pawn(Pawn other) : this() {
+      iD_ = other.iD_;
       color_ = other.color_;
       type_ = other.type_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -912,8 +919,19 @@ namespace BoardGamesGrpc.GameOnlines {
       return new Pawn(this);
     }
 
+    /// <summary>Field number for the "ID" field.</summary>
+    public const int IDFieldNumber = 1;
+    private int iD_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ID {
+      get { return iD_; }
+      set {
+        iD_ = value;
+      }
+    }
+
     /// <summary>Field number for the "Color" field.</summary>
-    public const int ColorFieldNumber = 1;
+    public const int ColorFieldNumber = 2;
     private int color_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Color {
@@ -924,7 +942,7 @@ namespace BoardGamesGrpc.GameOnlines {
     }
 
     /// <summary>Field number for the "Type" field.</summary>
-    public const int TypeFieldNumber = 2;
+    public const int TypeFieldNumber = 3;
     private int type_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Type {
@@ -947,6 +965,7 @@ namespace BoardGamesGrpc.GameOnlines {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ID != other.ID) return false;
       if (Color != other.Color) return false;
       if (Type != other.Type) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -955,6 +974,7 @@ namespace BoardGamesGrpc.GameOnlines {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (ID != 0) hash ^= ID.GetHashCode();
       if (Color != 0) hash ^= Color.GetHashCode();
       if (Type != 0) hash ^= Type.GetHashCode();
       if (_unknownFields != null) {
@@ -970,12 +990,16 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Color != 0) {
+      if (ID != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(ID);
+      }
+      if (Color != 0) {
+        output.WriteRawTag(16);
         output.WriteInt32(Color);
       }
       if (Type != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(Type);
       }
       if (_unknownFields != null) {
@@ -986,6 +1010,9 @@ namespace BoardGamesGrpc.GameOnlines {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (ID != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ID);
+      }
       if (Color != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Color);
       }
@@ -1002,6 +1029,9 @@ namespace BoardGamesGrpc.GameOnlines {
     public void MergeFrom(Pawn other) {
       if (other == null) {
         return;
+      }
+      if (other.ID != 0) {
+        ID = other.ID;
       }
       if (other.Color != 0) {
         Color = other.Color;
@@ -1021,10 +1051,14 @@ namespace BoardGamesGrpc.GameOnlines {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Color = input.ReadInt32();
+            ID = input.ReadInt32();
             break;
           }
           case 16: {
+            Color = input.ReadInt32();
+            break;
+          }
+          case 24: {
             Type = input.ReadInt32();
             break;
           }
@@ -1059,6 +1093,7 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Field(Field other) : this() {
+      iD_ = other.iD_;
       heigh_ = other.heigh_;
       width_ = other.width_;
       pawn_ = other.pawn_ != null ? other.pawn_.Clone() : null;
@@ -1070,8 +1105,19 @@ namespace BoardGamesGrpc.GameOnlines {
       return new Field(this);
     }
 
+    /// <summary>Field number for the "ID" field.</summary>
+    public const int IDFieldNumber = 1;
+    private int iD_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ID {
+      get { return iD_; }
+      set {
+        iD_ = value;
+      }
+    }
+
     /// <summary>Field number for the "Heigh" field.</summary>
-    public const int HeighFieldNumber = 1;
+    public const int HeighFieldNumber = 2;
     private int heigh_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Heigh {
@@ -1082,7 +1128,7 @@ namespace BoardGamesGrpc.GameOnlines {
     }
 
     /// <summary>Field number for the "Width" field.</summary>
-    public const int WidthFieldNumber = 2;
+    public const int WidthFieldNumber = 3;
     private int width_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Width {
@@ -1093,7 +1139,7 @@ namespace BoardGamesGrpc.GameOnlines {
     }
 
     /// <summary>Field number for the "Pawn" field.</summary>
-    public const int PawnFieldNumber = 3;
+    public const int PawnFieldNumber = 4;
     private global::BoardGamesGrpc.GameOnlines.Pawn pawn_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::BoardGamesGrpc.GameOnlines.Pawn Pawn {
@@ -1116,6 +1162,7 @@ namespace BoardGamesGrpc.GameOnlines {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ID != other.ID) return false;
       if (Heigh != other.Heigh) return false;
       if (Width != other.Width) return false;
       if (!object.Equals(Pawn, other.Pawn)) return false;
@@ -1125,6 +1172,7 @@ namespace BoardGamesGrpc.GameOnlines {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (ID != 0) hash ^= ID.GetHashCode();
       if (Heigh != 0) hash ^= Heigh.GetHashCode();
       if (Width != 0) hash ^= Width.GetHashCode();
       if (pawn_ != null) hash ^= Pawn.GetHashCode();
@@ -1141,16 +1189,20 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Heigh != 0) {
+      if (ID != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(ID);
+      }
+      if (Heigh != 0) {
+        output.WriteRawTag(16);
         output.WriteInt32(Heigh);
       }
       if (Width != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(Width);
       }
       if (pawn_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteMessage(Pawn);
       }
       if (_unknownFields != null) {
@@ -1161,6 +1213,9 @@ namespace BoardGamesGrpc.GameOnlines {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (ID != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ID);
+      }
       if (Heigh != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Heigh);
       }
@@ -1180,6 +1235,9 @@ namespace BoardGamesGrpc.GameOnlines {
     public void MergeFrom(Field other) {
       if (other == null) {
         return;
+      }
+      if (other.ID != 0) {
+        ID = other.ID;
       }
       if (other.Heigh != 0) {
         Heigh = other.Heigh;
@@ -1205,18 +1263,235 @@ namespace BoardGamesGrpc.GameOnlines {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Heigh = input.ReadInt32();
+            ID = input.ReadInt32();
             break;
           }
           case 16: {
+            Heigh = input.ReadInt32();
+            break;
+          }
+          case 24: {
             Width = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 34: {
             if (pawn_ == null) {
               Pawn = new global::BoardGamesGrpc.GameOnlines.Pawn();
             }
             input.ReadMessage(Pawn);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class PawnHistory : pb::IMessage<PawnHistory> {
+    private static readonly pb::MessageParser<PawnHistory> _parser = new pb::MessageParser<PawnHistory>(() => new PawnHistory());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<PawnHistory> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PawnHistory() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PawnHistory(PawnHistory other) : this() {
+      turn_ = other.turn_;
+      pawID_ = other.pawID_;
+      previusFiledID_ = other.previusFiledID_;
+      currentFiledID_ = other.currentFiledID_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PawnHistory Clone() {
+      return new PawnHistory(this);
+    }
+
+    /// <summary>Field number for the "Turn" field.</summary>
+    public const int TurnFieldNumber = 1;
+    private int turn_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Turn {
+      get { return turn_; }
+      set {
+        turn_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "PawID" field.</summary>
+    public const int PawIDFieldNumber = 2;
+    private int pawID_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int PawID {
+      get { return pawID_; }
+      set {
+        pawID_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "PreviusFiledID" field.</summary>
+    public const int PreviusFiledIDFieldNumber = 3;
+    private int previusFiledID_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int PreviusFiledID {
+      get { return previusFiledID_; }
+      set {
+        previusFiledID_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CurrentFiledID" field.</summary>
+    public const int CurrentFiledIDFieldNumber = 4;
+    private int currentFiledID_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CurrentFiledID {
+      get { return currentFiledID_; }
+      set {
+        currentFiledID_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as PawnHistory);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(PawnHistory other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Turn != other.Turn) return false;
+      if (PawID != other.PawID) return false;
+      if (PreviusFiledID != other.PreviusFiledID) return false;
+      if (CurrentFiledID != other.CurrentFiledID) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Turn != 0) hash ^= Turn.GetHashCode();
+      if (PawID != 0) hash ^= PawID.GetHashCode();
+      if (PreviusFiledID != 0) hash ^= PreviusFiledID.GetHashCode();
+      if (CurrentFiledID != 0) hash ^= CurrentFiledID.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Turn != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Turn);
+      }
+      if (PawID != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PawID);
+      }
+      if (PreviusFiledID != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PreviusFiledID);
+      }
+      if (CurrentFiledID != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(CurrentFiledID);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Turn != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Turn);
+      }
+      if (PawID != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PawID);
+      }
+      if (PreviusFiledID != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PreviusFiledID);
+      }
+      if (CurrentFiledID != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CurrentFiledID);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(PawnHistory other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Turn != 0) {
+        Turn = other.Turn;
+      }
+      if (other.PawID != 0) {
+        PawID = other.PawID;
+      }
+      if (other.PreviusFiledID != 0) {
+        PreviusFiledID = other.PreviusFiledID;
+      }
+      if (other.CurrentFiledID != 0) {
+        CurrentFiledID = other.CurrentFiledID;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Turn = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            PawID = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            PreviusFiledID = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            CurrentFiledID = input.ReadInt32();
             break;
           }
         }
@@ -1233,7 +1508,7 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[7]; }
+      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1466,7 +1741,7 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[8]; }
+      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1685,7 +1960,7 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[9]; }
+      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1914,15 +2189,15 @@ namespace BoardGamesGrpc.GameOnlines {
 
   }
 
-  public sealed partial class Game : pb::IMessage<Game> {
-    private static readonly pb::MessageParser<Game> _parser = new pb::MessageParser<Game>(() => new Game());
+  public sealed partial class GameData : pb::IMessage<GameData> {
+    private static readonly pb::MessageParser<GameData> _parser = new pb::MessageParser<GameData>(() => new GameData());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Game> Parser { get { return _parser; } }
+    public static pb::MessageParser<GameData> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[10]; }
+      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1931,27 +2206,40 @@ namespace BoardGamesGrpc.GameOnlines {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Game() {
+    public GameData() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Game(Game other) : this() {
+    public GameData(GameData other) : this() {
+      turn_ = other.turn_;
       playerTurn_ = other.playerTurn_ != null ? other.playerTurn_.Clone() : null;
       playerList_ = other.playerList_.Clone();
       board_ = other.board_ != null ? other.board_.Clone() : null;
+      pawnHistoriesList_ = other.pawnHistoriesList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Game Clone() {
-      return new Game(this);
+    public GameData Clone() {
+      return new GameData(this);
+    }
+
+    /// <summary>Field number for the "Turn" field.</summary>
+    public const int TurnFieldNumber = 1;
+    private int turn_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Turn {
+      get { return turn_; }
+      set {
+        turn_ = value;
+      }
     }
 
     /// <summary>Field number for the "PlayerTurn" field.</summary>
-    public const int PlayerTurnFieldNumber = 1;
+    public const int PlayerTurnFieldNumber = 2;
     private global::BoardGamesGrpc.GameOnlines.Player playerTurn_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::BoardGamesGrpc.GameOnlines.Player PlayerTurn {
@@ -1962,9 +2250,9 @@ namespace BoardGamesGrpc.GameOnlines {
     }
 
     /// <summary>Field number for the "PlayerList" field.</summary>
-    public const int PlayerListFieldNumber = 2;
+    public const int PlayerListFieldNumber = 3;
     private static readonly pb::FieldCodec<global::BoardGamesGrpc.GameOnlines.Player> _repeated_playerList_codec
-        = pb::FieldCodec.ForMessage(18, global::BoardGamesGrpc.GameOnlines.Player.Parser);
+        = pb::FieldCodec.ForMessage(26, global::BoardGamesGrpc.GameOnlines.Player.Parser);
     private readonly pbc::RepeatedField<global::BoardGamesGrpc.GameOnlines.Player> playerList_ = new pbc::RepeatedField<global::BoardGamesGrpc.GameOnlines.Player>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::BoardGamesGrpc.GameOnlines.Player> PlayerList {
@@ -1972,7 +2260,7 @@ namespace BoardGamesGrpc.GameOnlines {
     }
 
     /// <summary>Field number for the "Board" field.</summary>
-    public const int BoardFieldNumber = 3;
+    public const int BoardFieldNumber = 4;
     private global::BoardGamesGrpc.GameOnlines.Board board_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::BoardGamesGrpc.GameOnlines.Board Board {
@@ -1982,31 +2270,45 @@ namespace BoardGamesGrpc.GameOnlines {
       }
     }
 
+    /// <summary>Field number for the "PawnHistoriesList" field.</summary>
+    public const int PawnHistoriesListFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::BoardGamesGrpc.GameOnlines.PawnHistory> _repeated_pawnHistoriesList_codec
+        = pb::FieldCodec.ForMessage(42, global::BoardGamesGrpc.GameOnlines.PawnHistory.Parser);
+    private readonly pbc::RepeatedField<global::BoardGamesGrpc.GameOnlines.PawnHistory> pawnHistoriesList_ = new pbc::RepeatedField<global::BoardGamesGrpc.GameOnlines.PawnHistory>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Game);
+    public pbc::RepeatedField<global::BoardGamesGrpc.GameOnlines.PawnHistory> PawnHistoriesList {
+      get { return pawnHistoriesList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Game other) {
+    public override bool Equals(object other) {
+      return Equals(other as GameData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GameData other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Turn != other.Turn) return false;
       if (!object.Equals(PlayerTurn, other.PlayerTurn)) return false;
       if(!playerList_.Equals(other.playerList_)) return false;
       if (!object.Equals(Board, other.Board)) return false;
+      if(!pawnHistoriesList_.Equals(other.pawnHistoriesList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (Turn != 0) hash ^= Turn.GetHashCode();
       if (playerTurn_ != null) hash ^= PlayerTurn.GetHashCode();
       hash ^= playerList_.GetHashCode();
       if (board_ != null) hash ^= Board.GetHashCode();
+      hash ^= pawnHistoriesList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2020,15 +2322,20 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (Turn != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Turn);
+      }
       if (playerTurn_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(18);
         output.WriteMessage(PlayerTurn);
       }
       playerList_.WriteTo(output, _repeated_playerList_codec);
       if (board_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteMessage(Board);
       }
+      pawnHistoriesList_.WriteTo(output, _repeated_pawnHistoriesList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2037,6 +2344,9 @@ namespace BoardGamesGrpc.GameOnlines {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (Turn != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Turn);
+      }
       if (playerTurn_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerTurn);
       }
@@ -2044,6 +2354,7 @@ namespace BoardGamesGrpc.GameOnlines {
       if (board_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Board);
       }
+      size += pawnHistoriesList_.CalculateSize(_repeated_pawnHistoriesList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2051,9 +2362,12 @@ namespace BoardGamesGrpc.GameOnlines {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Game other) {
+    public void MergeFrom(GameData other) {
       if (other == null) {
         return;
+      }
+      if (other.Turn != 0) {
+        Turn = other.Turn;
       }
       if (other.playerTurn_ != null) {
         if (playerTurn_ == null) {
@@ -2068,6 +2382,7 @@ namespace BoardGamesGrpc.GameOnlines {
         }
         Board.MergeFrom(other.Board);
       }
+      pawnHistoriesList_.Add(other.pawnHistoriesList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2079,22 +2394,30 @@ namespace BoardGamesGrpc.GameOnlines {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 8: {
+            Turn = input.ReadInt32();
+            break;
+          }
+          case 18: {
             if (playerTurn_ == null) {
               PlayerTurn = new global::BoardGamesGrpc.GameOnlines.Player();
             }
             input.ReadMessage(PlayerTurn);
             break;
           }
-          case 18: {
+          case 26: {
             playerList_.AddEntriesFrom(input, _repeated_playerList_codec);
             break;
           }
-          case 26: {
+          case 34: {
             if (board_ == null) {
               Board = new global::BoardGamesGrpc.GameOnlines.Board();
             }
             input.ReadMessage(Board);
+            break;
+          }
+          case 42: {
+            pawnHistoriesList_.AddEntriesFrom(input, _repeated_pawnHistoriesList_codec);
             break;
           }
         }
@@ -2111,7 +2434,7 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[11]; }
+      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2128,7 +2451,7 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public GamePlay(GamePlay other) : this() {
-      game_ = other.game_ != null ? other.game_.Clone() : null;
+      gameData_ = other.gameData_ != null ? other.gameData_.Clone() : null;
       match_ = other.match_ != null ? other.match_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2138,14 +2461,14 @@ namespace BoardGamesGrpc.GameOnlines {
       return new GamePlay(this);
     }
 
-    /// <summary>Field number for the "Game" field.</summary>
-    public const int GameFieldNumber = 1;
-    private global::BoardGamesGrpc.GameOnlines.Game game_;
+    /// <summary>Field number for the "GameData" field.</summary>
+    public const int GameDataFieldNumber = 1;
+    private global::BoardGamesGrpc.GameOnlines.GameData gameData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::BoardGamesGrpc.GameOnlines.Game Game {
-      get { return game_; }
+    public global::BoardGamesGrpc.GameOnlines.GameData GameData {
+      get { return gameData_; }
       set {
-        game_ = value;
+        gameData_ = value;
       }
     }
 
@@ -2173,7 +2496,7 @@ namespace BoardGamesGrpc.GameOnlines {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Game, other.Game)) return false;
+      if (!object.Equals(GameData, other.GameData)) return false;
       if (!object.Equals(Match, other.Match)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2181,7 +2504,7 @@ namespace BoardGamesGrpc.GameOnlines {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (game_ != null) hash ^= Game.GetHashCode();
+      if (gameData_ != null) hash ^= GameData.GetHashCode();
       if (match_ != null) hash ^= Match.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2196,9 +2519,9 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (game_ != null) {
+      if (gameData_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(Game);
+        output.WriteMessage(GameData);
       }
       if (match_ != null) {
         output.WriteRawTag(18);
@@ -2212,8 +2535,8 @@ namespace BoardGamesGrpc.GameOnlines {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (game_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Game);
+      if (gameData_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GameData);
       }
       if (match_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Match);
@@ -2229,11 +2552,11 @@ namespace BoardGamesGrpc.GameOnlines {
       if (other == null) {
         return;
       }
-      if (other.game_ != null) {
-        if (game_ == null) {
-          Game = new global::BoardGamesGrpc.GameOnlines.Game();
+      if (other.gameData_ != null) {
+        if (gameData_ == null) {
+          GameData = new global::BoardGamesGrpc.GameOnlines.GameData();
         }
-        Game.MergeFrom(other.Game);
+        GameData.MergeFrom(other.GameData);
       }
       if (other.match_ != null) {
         if (match_ == null) {
@@ -2253,10 +2576,10 @@ namespace BoardGamesGrpc.GameOnlines {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (game_ == null) {
-              Game = new global::BoardGamesGrpc.GameOnlines.Game();
+            if (gameData_ == null) {
+              GameData = new global::BoardGamesGrpc.GameOnlines.GameData();
             }
-            input.ReadMessage(Game);
+            input.ReadMessage(GameData);
             break;
           }
           case 18: {
@@ -2280,7 +2603,7 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[12]; }
+      get { return global::BoardGamesGrpc.GameOnlines.GameOnlineReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2297,6 +2620,7 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public PlayMatchRequest(PlayMatchRequest other) : this() {
+      guidID_ = other.guidID_;
       userId_ = other.userId_;
       gamePlay_ = other.gamePlay_ != null ? other.gamePlay_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -2307,8 +2631,19 @@ namespace BoardGamesGrpc.GameOnlines {
       return new PlayMatchRequest(this);
     }
 
+    /// <summary>Field number for the "GuidID" field.</summary>
+    public const int GuidIDFieldNumber = 1;
+    private string guidID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string GuidID {
+      get { return guidID_; }
+      set {
+        guidID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "UserId" field.</summary>
-    public const int UserIdFieldNumber = 1;
+    public const int UserIdFieldNumber = 2;
     private int userId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int UserId {
@@ -2319,7 +2654,7 @@ namespace BoardGamesGrpc.GameOnlines {
     }
 
     /// <summary>Field number for the "GamePlay" field.</summary>
-    public const int GamePlayFieldNumber = 2;
+    public const int GamePlayFieldNumber = 3;
     private global::BoardGamesGrpc.GameOnlines.GamePlay gamePlay_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::BoardGamesGrpc.GameOnlines.GamePlay GamePlay {
@@ -2342,6 +2677,7 @@ namespace BoardGamesGrpc.GameOnlines {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (GuidID != other.GuidID) return false;
       if (UserId != other.UserId) return false;
       if (!object.Equals(GamePlay, other.GamePlay)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -2350,6 +2686,7 @@ namespace BoardGamesGrpc.GameOnlines {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (GuidID.Length != 0) hash ^= GuidID.GetHashCode();
       if (UserId != 0) hash ^= UserId.GetHashCode();
       if (gamePlay_ != null) hash ^= GamePlay.GetHashCode();
       if (_unknownFields != null) {
@@ -2365,12 +2702,16 @@ namespace BoardGamesGrpc.GameOnlines {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (GuidID.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(GuidID);
+      }
       if (UserId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(16);
         output.WriteInt32(UserId);
       }
       if (gamePlay_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(GamePlay);
       }
       if (_unknownFields != null) {
@@ -2381,6 +2722,9 @@ namespace BoardGamesGrpc.GameOnlines {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (GuidID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GuidID);
+      }
       if (UserId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(UserId);
       }
@@ -2397,6 +2741,9 @@ namespace BoardGamesGrpc.GameOnlines {
     public void MergeFrom(PlayMatchRequest other) {
       if (other == null) {
         return;
+      }
+      if (other.GuidID.Length != 0) {
+        GuidID = other.GuidID;
       }
       if (other.UserId != 0) {
         UserId = other.UserId;
@@ -2418,11 +2765,15 @@ namespace BoardGamesGrpc.GameOnlines {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 10: {
+            GuidID = input.ReadString();
+            break;
+          }
+          case 16: {
             UserId = input.ReadInt32();
             break;
           }
-          case 18: {
+          case 26: {
             if (gamePlay_ == null) {
               GamePlay = new global::BoardGamesGrpc.GameOnlines.GamePlay();
             }

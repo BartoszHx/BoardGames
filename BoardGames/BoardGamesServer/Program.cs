@@ -21,7 +21,7 @@ namespace BoardGamesServer
             // Build a server
             var serverUser = new Server
                              {
-                                 Services = { UserService.BindService(new UserServer(null))}, //Mapper!!!
+                                 Services = { UserService.BindService(new UserServer(null))}, //Ninject
                                  Ports = { new ServerPort(Host, PortUser, ServerCredentials.Insecure) }
                              };
 
@@ -38,10 +38,11 @@ namespace BoardGamesServer
             serverGameOnline.Start();
             Console.WriteLine(" listening on port GameOnline " + PortGameOnline);
 
-
+            Console.WriteLine(" Press button to close server");
             Console.ReadKey();
 
             serverUser.ShutdownAsync().Wait();
+            serverGameOnline.ShutdownAsync().Wait();
         }
 
         public static void MapperInit()

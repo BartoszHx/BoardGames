@@ -9,6 +9,5 @@ namespace BoardGamesShared.Interfaces
 	    int MinHeight { get; set; }
 	    int MinWidth { get; set; }
 	    ICollection<IField> FieldList { get; set; }
-	    IBoard Copy(); //Nie widzi mi się to
     }
 }

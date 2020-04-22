@@ -1,5 +1,4 @@
-﻿using BoardGames.Factories;
-using BoardGamesWPF.ViewModels.Helpers;
+﻿using BoardGamesWPF.ViewModels.Helpers;
 using GalaSoft.MvvmLight.CommandWpf;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,34 +18,33 @@ namespace BoardGamesWPF.ViewModels
         public FieldViewModel SelectedField { get; set; }
         public RelayCommand<FieldViewModel> ButtonClickCommand { get; private set; }
 
-	    public Brush PlayerTurnColor => Game.PlayerTurn.Color == PawColors.White ? Brushes.Wheat : Brushes.Black; //Bardziej do testu
+        public Brush PlayerTurnColor => Game.PlayerTurn.Color == PawColors.White ? Brushes.Wheat : Brushes.Black; //Bardziej do testu
 
 		//Test
 		public MessagesViewModel Messages { get; set; }
 
-
-        public GameViewModel(GameTypes gameType)
+        public void Load(IGame game)
         {
-            Game = GameFactory.Create(gameType);
-            //Game = BoardGames.GameFactory.Create(BoardGames.Enums.GameType.Checkers);
+            Game = game;
 
             List<IPlayer> PlayerList = new List<IPlayer>();
-            PlayerList.Add(new Models.PlayerModel("Gracz1",PawColors.White));
-            PlayerList.Add(new Models.PlayerModel("Gracz2",PawColors.Black));
+            PlayerList.Add(new Models.PlayerModel("Gracz1", PawColors.White));
+            PlayerList.Add(new Models.PlayerModel("Gracz2", PawColors.Black));
 
             //Pamiętać, całą robotę ma zrobić framwork!
             Game.PlayerList = PlayerList.ToList();
             Game.PlayerTurn = (PlayerList.First());
 
-			Messages = new MessagesViewModel();
+            Messages = new MessagesViewModel();
             //Game.Alert = Messages.Show;
-	        Game.Alert = Alert;
+            //Game.Alert = Alert;
 
             Game.StartGame(PlayerList);
-
+            
             FieldList = new ObservableCollection<FieldViewModel>();
             foreach (var field in Game.Board.FieldList)
                 FieldList.Add(new FieldViewModel(field));
+                
 
             ButtonClickCommand = new RelayCommand<FieldViewModel>(ButtonClick);
         }
@@ -62,7 +60,6 @@ namespace BoardGamesWPF.ViewModels
             SelectedField = field;
 
             unselectFieldCanMove();
-
             var canMoveFieldList = Game.PawnWherCanMove(field.Field);
 
             foreach (var fie in canMoveFieldList)

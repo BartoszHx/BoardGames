@@ -24,6 +24,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -90,6 +92,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BoardGamesDatabase\BoardGamesDatabase.csproj">
+      <Project>{dce44275-6166-4982-b974-7d06d4e53100}</Project>
+      <Name>BoardGamesDatabase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BoardGamesGrpc\BoardGamesGrpc.csproj">
       <Project>{BC2FC87E-3AF1-4324-9B92-97A967D86505}</Project>
       <Name>BoardGamesGrpc</Name>
@@ -103,7 +109,7 @@
       <Name>BoardGamesServer</Name>
     </ProjectReference>
     <ProjectReference Include="..\BoardGamesShared\BoardGamesShared.csproj">
-      <Project>{3873864B-A1F6-4DEE-BC8D-34BB7CFECB74}</Project>
+      <Project>{b3cf8bab-d033-4b49-a351-77a14b41b087}</Project>
       <Name>BoardGamesShared</Name>
     </ProjectReference>
     <ProjectReference Include="..\BoardGames\BoardGames.csproj">

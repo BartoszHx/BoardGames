@@ -4,15 +4,14 @@ using System.Text;
 using BoardGamesShared.Enums;
 using BoardGamesShared.Interfaces;
 
-namespace BoardGamesClient.Models
+namespace BoardGamesShared.Models
 {
-    internal class Game : IGameData
+    public class GameData : IGameData
     {
+        public int Turn { get; set; }
         public IPlayer PlayerTurn { get; set; }
-
         public IList<IPlayer> PlayerList { get; set; }
-
         public IBoard Board { get; set; }
-
+        public IList<IPawnHistory> PawnHistoriesList { get; set; }
     }
 }

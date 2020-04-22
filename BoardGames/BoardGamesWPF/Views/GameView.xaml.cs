@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoardGamesWPF.ViewModels.OnlineTest;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,12 @@ namespace BoardGamesWPF.Views
     public partial class GameView : Window
     {
         public GameView(ViewModels.GameViewModel dataContext)
+        {
+            this.DataContext = dataContext;
+            InitializeComponent();
+        }
+
+        public GameView(GameOnlineViewModel dataContext)
         {
             this.DataContext = dataContext;
             InitializeComponent();

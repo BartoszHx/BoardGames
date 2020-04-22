@@ -6,6 +6,6 @@ namespace BoardGamesShared.Interfaces
 {
     public interface IChessGame : IGame
     {
-	    Func<IEnumerable<PawChess>, PawChess> ChosePawUpgrade { get; set; }
+	    Func<IEnumerable<PawChess>, PawChess> ChosePawUpgrade { get; }
     }
 }

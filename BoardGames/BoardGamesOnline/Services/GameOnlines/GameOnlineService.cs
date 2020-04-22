@@ -16,14 +16,13 @@ namespace BoardGamesOnline.Services.GameOnline
 {
     public class GameOnlineService : IGameOnlineService
     {
-        private IBoardGameUnitOfWorkBulider bulider;
-        public List<SearchOpponent> SearchForMetchUsers { get; set; } //Nie dictionary
+        private IBoardGameUnitOfWorkBulider boardGameBulider;
+        public List<SearchOpponent> SearchForMetchUsers { get; set; }
         public List<IGamePlay> PlayedMatches { get; set; }
 
-        //Nie ma połączniea z bazą?
         public GameOnlineService(IBoardGameUnitOfWorkBulider bulider)
         {
-            this.bulider = bulider;
+            this.boardGameBulider = bulider;
             SearchForMetchUsers = new List<SearchOpponent>();
             this.PlayedMatches = new List<IGamePlay>();
         }
@@ -70,43 +69,50 @@ namespace BoardGamesOnline.Services.GameOnline
 
         public void ConnectPlayersToMatch(GameTypes gameType)
         {
-            if (!SearchForMetchUsers.Any())
+            try
             {
-                return;
-            }
-            //Zrobić refaktor
-            //może się przydać lock
-            var first = SearchForMetchUsers.FirstOrDefault(f => f.GameType == gameType);
-            if (first == null)
-            {
-                return;
-            }
-
-            var secend = SearchForMetchUsers.FirstOrDefault(f => f.GameType == gameType && f.UserId != first.UserId);
-            if (secend == null)
-            {
-                return;
-            }
-
-            using (IBoardGameUnitOfWork service = bulider.Bulid())
-            {
-                SearchForMetchUsers.Remove(first);
-                SearchForMetchUsers.Remove(secend);
-
-                List<int> userList = new List<int>{first.UserId, secend.UserId};
-                //Pomyśłec co z GameData!!!! Wstępnie niech trzyma dane historyczne. Nie jest potrzebny przy created
-                MatchServiceResponse respons = service.MatchService.Create(new CreateMatch { GameType = (int)gameType, UserIdList = userList });
-
-                if (respons.Status == ServiceRespondStatus.Error)
+                if (!SearchForMetchUsers.Any())
                 {
-                    //Czemu exception, Nie powino być sytuacji że tego nie zapisze. Jeszcze to przemyśleć
-                    throw new Exception(String.Join(String.Empty, respons.Messages.SelectMany(s => s.Key + " - " + s.Value + ". ")));
+                    return;
+                }
+                //Zrobić refaktor
+                //może się przydać lock
+                var first = SearchForMetchUsers.FirstOrDefault(f => f.GameType == gameType);
+                if (first == null)
+                {
+                    return;
                 }
 
-                IGamePlay gamepPlay = new GamePlay();
-                gamepPlay.Match = Mapping.Mapper.Map<Match>(respons.Match);
+                var secend = SearchForMetchUsers.FirstOrDefault(f => f.GameType == gameType && f.UserId != first.UserId);
+                if (secend == null)
+                {
+                    return;
+                }
 
-                this.PlayedMatches.Add(gamepPlay);
+                using (IBoardGameUnitOfWork service = boardGameBulider.Bulid())
+                {
+                    SearchForMetchUsers.Remove(first);
+                    SearchForMetchUsers.Remove(secend);
+
+                    List<int> userList = new List<int> { first.UserId, secend.UserId };
+                    //Pomyśłec co z GameData!!!! Wstępnie niech trzyma dane historyczne. Nie jest potrzebny przy created
+                    MatchServiceResponse respons = service.MatchService.Create(new CreateMatch { GameType = (int)gameType, UserIdList = userList });
+
+                    if (respons.Status == ServiceRespondStatus.Error)
+                    {
+                        //Czemu exception, Nie powino być sytuacji że tego nie zapisze. Jeszcze to przemyśleć
+                        throw new Exception(String.Join(String.Empty, respons.Messages.SelectMany(s => s.Key + " - " + s.Value + ". ")));
+                    }
+
+                    IGamePlay gamepPlay = new GamePlay();
+                    gamepPlay.Match = Mapping.Mapper.Map<Match>(respons.Match);
+
+                    this.PlayedMatches.Add(gamepPlay);
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
     }

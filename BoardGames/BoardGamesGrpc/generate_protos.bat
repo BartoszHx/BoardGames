@@ -36,7 +36,7 @@ setlocal
 @rem enter this directory
 cd ..
 
-set TOOLS_PATH=packages\Grpc.Tools.1.21.0\tools\windows_x64
+set TOOLS_PATH=packages\Grpc.Tools.2.24.0\tools\windows_x64
 
 
 %TOOLS_PATH%\protoc.exe BoardGamesGrpc\protos\shared_model.proto --csharp_out BoardGamesGrpc

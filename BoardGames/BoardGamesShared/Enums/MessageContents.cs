@@ -3,7 +3,8 @@
     public enum MessageContents
     {
 		IncorrectMovement,
-		Checkmate,
-		Check
-	}
+		WinWhite,
+        WinBlack,
+        Check
+    }
 }

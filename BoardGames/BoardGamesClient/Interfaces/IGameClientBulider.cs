@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using BoardGamesClient.Models;
+using BoardGamesShared.Enums;
+using BoardGamesShared.Interfaces;
 
 namespace BoardGamesClient.Interfaces
 {
@@ -9,6 +11,9 @@ namespace BoardGamesClient.Interfaces
     {
         IGameClientBulider SetActionMessage(Action<Dictionary<string, string>> message);
         IGameClientBulider SetUser(User user);
-        IGameClient Config();
+        IGameClientBulider SetChessGame(Action<MessageContents> alert, Func<IEnumerable<PawChess>, PawChess> chosePawUpgrade);
+        IGameClientBulider SetCheckerGame(Action<MessageContents> alert);
+        IGameClientBulider SetRereshViewAction(Action refreshView);
+        IGameClient Bulid();
     }
 }

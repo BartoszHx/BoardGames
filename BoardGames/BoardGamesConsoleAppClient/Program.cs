@@ -5,10 +5,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using BoardGamesClient;
+using BoardGamesClient.Models;
 using BoardGamesClient.Responses;
 using BoardGamesGrpc.Users;
-using BoardGamesShared.Enums;
+using BoardGamesShared.Interfaces;
 using Grpc.Core;
+using GameOnlineGrpc = BoardGamesGrpc.GameOnlines;
+
 
 namespace BoardGamesConsoleAppClient
 {
@@ -16,6 +19,43 @@ namespace BoardGamesConsoleAppClient
     {
         static void Main(string[] args)
         {
+            /* To działa
+            var playerList = new Google.Protobuf.Collections.RepeatedField<GameOnlineGrpc.Player>();
+            playerList.Add(new GameOnlineGrpc.Player() { ID = 1, Name = "Test1", Color = 1 });
+            playerList.Add(new GameOnlineGrpc.Player() { ID = 2, Name = "Test2", Color = 2 });
+
+            GameOnlineGrpc.Game gameTest = new GameOnlineGrpc.Game()
+            {
+                Board = new GameOnlineGrpc.Board() { MaxHeight = 8, MaxWidth = 8},
+                PlayerTurn = new GameOnlineGrpc.Player() { ID = 1, Name= "Test1", Color = 1}
+        
+            };
+            gameTest.PlayerList.AddRange(playerList);
+
+
+            var mtest = BoardGamesClient.Configurations.AutoMappers.Mapping.Mapper.Map<IGameData>(gameTest);
+            var mtest2 = BoardGamesClient.Configurations.AutoMappers.Mapping.Mapper.Map<GameOnlineGrpc.Game>(mtest);
+            */
+
+            /*
+            var matchuser = new Google.Protobuf.Collections.RepeatedField<GameOnlineGrpc.MatchUser>();
+            matchuser.Add(new GameOnlineGrpc.MatchUser() { MatchId = 1, MatchResult = 0, MatchUserId = 2, User = null });
+            matchuser.Add(new GameOnlineGrpc.MatchUser() { MatchId = 2, MatchResult = 0, MatchUserId = 3, User = null });
+            matchuser.Add(new GameOnlineGrpc.MatchUser() { MatchId = 3, MatchResult = 0, MatchUserId = 5, User = null });
+
+            GameOnlineGrpc.Match match = new GameOnlineGrpc.Match()
+            {
+                MatchId = 1,
+                DateEnd = DateTime.Now.ToString(),
+                DateStart = DateTime.Now.ToString(),
+                GameType = 1
+            };
+            match.MatchUsers.AddRange(matchuser);
+
+            var mtest = BoardGamesClient.Configurations.AutoMappers.Mapping.Mapper.Map<Match>(match);
+            var mtest2 = BoardGamesClient.Configurations.AutoMappers.Mapping.Mapper.Map<GameOnlineGrpc.Match>(mtest);
+            */
+            /*
             //Działą!!! Wszystkie Dll musza mieć tą samą versję Grpc.Core, inaczje będzie komunikat że nie 
             //Teraz spróbować to przypiąć na wpfClient
             Program a = new Program();
@@ -23,6 +63,7 @@ namespace BoardGamesConsoleAppClient
             //a.Test();
             //a.voidTestDouble();
             //a.LoginTest();
+            */
             Console.ReadKey();
 
         }

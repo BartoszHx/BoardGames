@@ -48,13 +48,16 @@ namespace BoardGamesClient.Servers
             this.server.GameClient.CancelSearchOpponent(new BoardGamesGrpc.GameOnlines.CancelSearchOpponentRequest { UserId = userID });
         }
 
-        public async Task PlayMatchConnect(PlayMatch playMatch)
+        public async Task PlayMatchConnect(Action<GamePlay> playMatchResponsAction, int guidID)
         {
-            using (this._matchPlayCall = this.server.GameClient.PlayMatch())
+            Metadata header = new Metadata();
+            header.Add(new Metadata.Entry("GuidID", guidID.ToString()));
+
+            using (this._matchPlayCall = this.server.GameClient.PlayMatch(header))
             {
                 while (await this._matchPlayCall.ResponseStream.MoveNext(CancellationToken.None))
                 {
-                    playMatch.GamePlay = Mapping.Mapper.Map<GamePlay>(this._matchPlayCall.ResponseStream.Current);
+                    playMatchResponsAction(Mapping.Mapper.Map<GamePlay>(this._matchPlayCall.ResponseStream.Current));
                 }
             }
         }
@@ -62,7 +65,7 @@ namespace BoardGamesClient.Servers
         public void PlayMatchSend(PlayMatch playMatch)
         {
             BoardGamesGrpc.GameOnlines.GamePlay gamePlay = Mapping.Mapper.Map<BoardGamesGrpc.GameOnlines.GamePlay>(playMatch.GamePlay);
-            this._matchPlayCall.RequestStream.WriteAsync(new BoardGamesGrpc.GameOnlines.PlayMatchRequest { GamePlay = gamePlay, UserId = playMatch.UserId });
+            this._matchPlayCall.RequestStream.WriteAsync(new BoardGamesGrpc.GameOnlines.PlayMatchRequest { GamePlay = gamePlay, UserId = playMatch.UserId, GuidID = gamePlay.Match.MatchId.ToString() });
         }
     }
 }

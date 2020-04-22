@@ -82,6 +82,18 @@ namespace BoardGamesServerIntegrationTest.Tests
 
         #region Test
 
+        //
+        public void Add100Users()
+        {
+            for(int i = 0; i <100; i++)
+            {
+                string userName = "Test" + i;
+                var passHash = HashEncryption.Hash(userName);
+                Context.Users.Add(new User { Email = userName+"@a.a", Password = passHash, Name = userName });
+                Context.SaveChanges();
+            }
+        }
+
         [Test]
         public void LoginSuccess()
         {

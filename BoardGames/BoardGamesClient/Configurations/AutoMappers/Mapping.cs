@@ -7,7 +7,7 @@ using AutoMapper;
 
 namespace BoardGamesClient.Configurations.AutoMappers
 {
-    internal static class Mapping
+    public static class Mapping //zmienić na internal
     {
         private static readonly Lazy<IMapper> Lazy = new Lazy<IMapper>(Configurations.AutoMapperConfig.MapperConfiguration);
 

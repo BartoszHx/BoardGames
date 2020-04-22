@@ -5,9 +5,14 @@ namespace BoardGamesWPF.ViewModels.Checkers
     public class GameCheckerViewModel : GameViewModel
     {
 	    public GameCheckerViewModel()
-		    : base(GameTypes.Checkers)
 	    {
-		    
-	    }
+            /*
+            var game = new BoardGames.Buliders.CheckerGameBulider()
+                .SetAlertMessage(Alert)
+                .Bulid();
+
+            base.Load(game);
+            */
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace BoardGamesOnline.Interfaces
 {
     public interface IGamePlay
     {
-        IGameData Game { get; set; }
+        IGameData GameData { get; set; }
 
         Match Match { get; set; }
     }

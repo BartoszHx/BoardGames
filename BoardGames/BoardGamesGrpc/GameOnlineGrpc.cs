@@ -72,7 +72,7 @@ namespace BoardGamesGrpc.GameOnlines {
     {
       /// <summary>Creates a new client for GameOnlineService</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public GameOnlineServiceClient(grpc::Channel channel) : base(channel)
+      public GameOnlineServiceClient(grpc::ChannelBase channel) : base(channel)
       {
       }
       /// <summary>Creates a new client for GameOnlineService that uses a custom <c>CallInvoker</c>.</summary>

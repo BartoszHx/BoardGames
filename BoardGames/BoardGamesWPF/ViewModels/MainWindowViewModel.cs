@@ -19,10 +19,13 @@ namespace BoardGamesWPF.ViewModels
             ChessClickCommand = new RelayCommand(ChessClick);
             CheckersClickCommand = new RelayCommand(CheckersClick);
 
+            //Test
+            //new Views.GameView(new ViewModels.OnlineTest.GameOnlineViewModel()).ShowDialog();
+            new Views.GameView(new ViewModels.GameViewModel()).ShowDialog();
+
             //Ponieważ jestem leniwy, albo oszczędzam swój czas
             //ChessClick();
-			CheckersClick();
-			
+            //CheckersClick();
         }
 
         private void ChessClick()
