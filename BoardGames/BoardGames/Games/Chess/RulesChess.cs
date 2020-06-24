@@ -4,6 +4,7 @@ using BoardGames.Interfaces;
 using BoardGames.Models;
 using BoardGamesShared.Enums;
 using BoardGamesShared.Interfaces;
+using BoardGamesShared.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -108,11 +109,6 @@ namespace BoardGames.Games.Chess
 
             return true;//Czy potrzebne jest to?
 	    }
-
-	    public void SetStartPositionPaws()
-	    {
-			MoveRules.SetStartPositionOnBoard();
-        }
 
 	    public bool IsPawnUpgrade(IField field)
 	    {

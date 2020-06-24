@@ -9,16 +9,16 @@ using Ninject.Parameters;
 
 namespace BoardGameDatabase.Buliders
 {
-    public class BoardGameUnitOfWorkBulider : IBoardGameUnitOfWorkBulider
+    public class BoardGameUnitOfWorkBulider : IBoardGameServiceBulider
     {
         private bool withTransaction;
 
-        public IBoardGameUnitOfWork Bulid()
+        public IBoardGameServices Bulid()
         {
-            return StaticKernel.Get<IBoardGameUnitOfWork>(new ConstructorArgument("withTransaction", withTransaction, true));
+            return StaticKernel.Get<IBoardGameServices>(new ConstructorArgument("withTransaction", withTransaction, true));
         }
 
-        public IBoardGameUnitOfWorkBulider SetTransactionScope()
+        public IBoardGameServiceBulider SetTransactionScope()
         {
             withTransaction = true;
             return this;

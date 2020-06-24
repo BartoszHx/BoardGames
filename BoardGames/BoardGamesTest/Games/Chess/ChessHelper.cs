@@ -14,11 +14,8 @@ namespace BoardGamesTest.Games.Chess
             playerList.Add(new PlayerModel { Color = PawColors.White, ID = 1, Name = "Test1" });
             playerList.Add(new PlayerModel { Color = PawColors.Black, ID = 2, Name = "Test2" });
 
-            IChessGame game = new BoardGames.Buliders.ChessGameStandardBulider()
-                                             .SetPlayerList(playerList)
-                                             .Bulid();
+            IChessGame game = new ChessGameCreator().StandardGame(playerList, null, null);
 
-            game.StartGame(playerList);
             return game;
         }
 
@@ -34,9 +31,6 @@ namespace BoardGamesTest.Games.Chess
                 .SetPlayerList(playerList)
                 .SetPlayerTurn(playerList[0])
                 .Bulid();
-
-
-            game.StartGame(playerList);
 
             return game;
         }

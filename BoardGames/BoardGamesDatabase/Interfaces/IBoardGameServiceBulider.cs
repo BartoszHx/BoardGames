@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BoardGameDatabase.Interfaces
 {
-    public interface IBoardGameUnitOfWorkBulider
+    public interface IBoardGameServiceBulider
     {
-        IBoardGameUnitOfWorkBulider SetTransactionScope();
-        IBoardGameUnitOfWork Bulid();
+        IBoardGameServiceBulider SetTransactionScope();
+        IBoardGameServices Bulid();
     }
 }

@@ -22,8 +22,8 @@ namespace BoardGameDatabase.Configurations
             this.Bind<IMatchService>().To<MatchService>();
 
             //this.Bind<IBoardGameService>().To<ServiceUnitOfWork>();
-            this.Bind<IBoardGameUnitOfWork>().ToProvider(new Providers.BoardGameServiceProvider());
-            this.Bind<IBoardGameUnitOfWorkBulider>().To<Buliders.BoardGameUnitOfWorkBulider>();
+            this.Bind<IBoardGameServices>().ToProvider(new Providers.BoardGameServiceProvider());
+            this.Bind<IBoardGameServiceBulider>().To<Buliders.BoardGameUnitOfWorkBulider>();
 
             this.Bind<IMatchServiceValidation>().To<MatchServiceValidation>();
             this.Bind<IMatchServiceValidationBulider>().To<MatchServiceValidationBulider>();

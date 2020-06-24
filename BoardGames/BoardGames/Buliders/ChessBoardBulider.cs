@@ -25,18 +25,6 @@ namespace BoardGames.Buliders
             maxWidth = 8;
         }
 
-        public ChessBoardBulider SetMaxHeight(int height)
-        {
-            maxHeight = height;
-            return this;
-        }
-
-        public ChessBoardBulider SetMaxWidth(int width)
-        {
-            maxWidth = width;
-            return this;
-        }
-
         public ChessBoardBulider SetPawn(PawChess pawnType, int height, int width, PawColors color)
         {
             //Przydała by się walidacja
@@ -56,6 +44,25 @@ namespace BoardGames.Buliders
 
             return this;
         }
+
+        public ChessBoardBulider SetAllPawnInHeigh(PawChess pawnType, int height,PawColors color)
+        {
+            for(int i = 1; i <= maxWidth; i++)
+            {
+                SetPawn(pawnType, height, i, color);
+            }
+
+            return this;
+        }
+
+        public ChessBoardBulider SetPawnInTwoCorner(PawChess pawnType, int height, int firstWidth, PawColors color)
+        {
+            int secendWidth = maxWidth - firstWidth + 1;
+            SetPawn(pawnType, height, firstWidth, color);
+            SetPawn(pawnType, height, secendWidth, color);
+            return this;
+        }
+
 
         public IBoard Bulid()
         {

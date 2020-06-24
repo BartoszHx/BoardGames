@@ -54,12 +54,12 @@
     <Compile Include="Buliders\CheckerGameBulider.cs" />
     <Compile Include="Buliders\ChessBoardBulider.cs" />
     <Compile Include="Buliders\ChessGameBulider.cs" />
-    <Compile Include="Buliders\ChessGameStandardBulider.cs" />
     <Compile Include="Extensions\BoardExtension.cs" />
     <Compile Include="Extensions\FieldExtension.cs" />
     <Compile Include="Games\Checkers\RulesChecker.cs" />
     <Compile Include="Games\Checkers\Rules\QueenRules.cs" />
     <Compile Include="Games\Checkers\Rules\StandardCheckersMoveRules.cs" />
+    <Compile Include="Games\Chess\ChessGameCreator.cs" />
     <Compile Include="Games\Chess\Rules\CastlingCheckProgres.cs" />
     <Compile Include="Games\Chess\Rules\CastlingRules.cs" />
     <Compile Include="Interfaces\IChessGameBulider.cs" />
@@ -68,7 +68,6 @@
     <Compile Include="Games\Chess\Rules\MoveChessRules.cs" />
     <Compile Include="Games\StandardMoveRules.cs" />
     <Compile Include="Games\Chess\RulesChess.cs" />
-    <Compile Include="Interfaces\IMoveRule.cs" />
     <Compile Include="Interfaces\IRules.cs" />
     <Compile Include="Games\Checkers\Rules\PawnRules.cs" />
     <Compile Include="Games\Chess\Rules\BishopRules.cs" />

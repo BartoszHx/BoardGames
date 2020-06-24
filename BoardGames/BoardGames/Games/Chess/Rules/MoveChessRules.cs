@@ -1,5 +1,4 @@
 ﻿using BoardGames.Extensions;
-using BoardGames.Interfaces;
 using BoardGamesShared.Enums;
 using BoardGamesShared.Interfaces;
 using System;
@@ -82,18 +81,6 @@ namespace BoardGames.Games.Chess.Rules
 
 		    return whereEnenymCanMoveList;
 	    }
-
-        public void SetStartPositionOnBoard()
-	    {
-            int idIncrementation = 0;
-
-            BishopRules.SetStartPositionOnBoard(ref idIncrementation);
-		    KingRules.SetStartPositionOnBoard(ref idIncrementation);
-		    KnightRules.SetStartPositionOnBoard(ref idIncrementation);
-		    PawnRules.SetStartPositionOnBoard(ref idIncrementation);
-		    QueenRules.SetStartPositionOnBoard(ref idIncrementation);
-		    RookRules.SetStartPositionOnBoard(ref idIncrementation);
-        }
 
 	    public bool IsColorHaveCheck(PawColors color)
 	    {

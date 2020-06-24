@@ -18,6 +18,11 @@ namespace BoardGamesClient.Configurations.AutoMappers.Converters
                 destination.PlayerList.Add(context.Mapper.Map<GameOnlineGrpc.Player>(player));
             }
 
+            foreach(var history in source.PawnHistoriesList)
+            {
+                destination.PawnHistoriesList.Add(context.Mapper.Map<GameOnlineGrpc.PawnHistory>(history));
+            }
+
             return destination;
         }
     }

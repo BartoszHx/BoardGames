@@ -9,16 +9,16 @@ namespace BoardGamesOnline.Services.Users
 {
     public class UserService : IUserService //internal, komunikacja przez interfacy
     {
-        private IBoardGameUnitOfWorkBulider bulider;
+        private IBoardGameServiceBulider serviceBulider;
 
-        public UserService(IBoardGameUnitOfWorkBulider bulider)
+        public UserService(IBoardGameServiceBulider bulider)
         {
-            this.bulider = bulider;
+            this.serviceBulider = bulider;
         }
 
         public UserRespond Login(string email, string password)
         {
-            using (IBoardGameUnitOfWork service = bulider.Bulid())
+            using (IBoardGameServices service = serviceBulider.Bulid())
             {
                 return Mapping.Mapper.Map<UserRespond>(service.UserService.Login(email, password));
             }
@@ -26,7 +26,7 @@ namespace BoardGamesOnline.Services.Users
 
         public ServiceRespond Registration(User user, string password, string repeatPassword)
         {
-            using (IBoardGameUnitOfWork service = bulider.Bulid())
+            using (IBoardGameServices service = serviceBulider.Bulid())
             {
                 DbModel.User userDb = Mapping.Mapper.Map<DbModel.User>(user);
                 return Mapping.Mapper.Map<ServiceRespond>(service.UserService.Registration(userDb, password, repeatPassword));
@@ -35,7 +35,7 @@ namespace BoardGamesOnline.Services.Users
 
         public ServiceRespond ChangePassword(int userId, string oldPassword, string newPassword, string repeatNewPassword)
         {
-            using (IBoardGameUnitOfWork service = bulider.Bulid())
+            using (IBoardGameServices service = serviceBulider.Bulid())
             {
                 return Mapping.Mapper.Map<ServiceRespond>(service.UserService.ChangePassword(userId, oldPassword, newPassword, repeatNewPassword));
             }

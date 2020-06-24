@@ -27,19 +27,7 @@ namespace BoardGamesWPF.ViewModels
         {
             Game = game;
 
-            List<IPlayer> PlayerList = new List<IPlayer>();
-            PlayerList.Add(new Models.PlayerModel("Gracz1", PawColors.White));
-            PlayerList.Add(new Models.PlayerModel("Gracz2", PawColors.Black));
-
-            //Pamiętać, całą robotę ma zrobić framwork!
-            Game.PlayerList = PlayerList.ToList();
-            Game.PlayerTurn = (PlayerList.First());
-
             Messages = new MessagesViewModel();
-            //Game.Alert = Messages.Show;
-            //Game.Alert = Alert;
-
-            Game.StartGame(PlayerList);
             
             FieldList = new ObservableCollection<FieldViewModel>();
             foreach (var field in Game.Board.FieldList)

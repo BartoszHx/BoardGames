@@ -71,8 +71,8 @@
     <Compile Include="Buliders\MatchServiceValidationBulider.cs" />
     <Compile Include="Configurations\Providers\BoardGameServiceProvider.cs" />
     <Compile Include="Interfaces\Buliders\IMatchServiceValidationBulider.cs" />
-    <Compile Include="Interfaces\IBoardGameUnitOfWork.cs" />
-    <Compile Include="Interfaces\IBoardGameUnitOfWorkBulider.cs" />
+    <Compile Include="Interfaces\IBoardGameServices.cs" />
+    <Compile Include="Interfaces\IBoardGameServiceBulider.cs" />
     <Compile Include="Services\BoardGameDatabaseUnitOfWork.cs" />
     <Compile Include="Configurations\Binding.cs" />
     <Compile Include="DbContexts\BoardGameDbContext.cs" />

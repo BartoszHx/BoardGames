@@ -21,51 +21,22 @@ namespace BoardGames.Games.Checkers
 
         public CheckerGame(CheckerGameBulider bulider)
         {
+            //Tutaj zrobić refaktor
             Board = KernelInstance.Get<IBoard>();
 			Rules = new RulesChecker(Board);
             PawnHistoriesList = new List<IPawnHistory>();
             Alert = bulider.Alert;
-        }
 
-        
-	    public void StartGame(IEnumerable<IPlayer> playerList)
-	    {
             Board.MaxHeight = 8;
             Board.MaxWidth = 8;
             Board.MinHeight = 1;
-		    Board.MinWidth = 1;
+            Board.MinWidth = 1;
             Turn = 1;
             Board.SetStartBoard();
             Rules.SetStartPositionOnBoard();
-            PlayerList = playerList.ToList();
+            PlayerList = bulider.PlayerList;
             SetColorAndStartPlayer();
         }
-
-        //Test
-        /*
-        public void StartGame(IEnumerable<IPlayer> playerList)
-        {
-            Board.MaxHeight = 4;
-            Board.MaxWidth = 4;
-            Board.MinHeight = 1;
-            Board.MinWidth = 1;
-            Board.SetStartBoard();
-            //Rules.SetStartPositionOnBoard();
-
-            var a1 = Board.FieldList.First(p => p.Heigh == 1 && p.Width == 1);
-            a1.Pawn = KernelInstance.Get<IPawn>();
-            a1.Pawn.Type = PawType.PawnCheckers;
-            a1.Pawn.Color = PawColors.White;
-
-            var a2 = Board.FieldList.First(p => p.Heigh == 4 && p.Width == 4);
-            a2.Pawn = KernelInstance.Get<IPawn>();
-            a2.Pawn.Type = PawType.PawnCheckers;
-            a2.Pawn.Color = PawColors.Black;
-
-
-            PlayerList = playerList.ToList();
-            SetColorAndStartPlayer();
-        }*/
 
         public IEnumerable<IField> PawnWherCanMove(IField field)
 	    {

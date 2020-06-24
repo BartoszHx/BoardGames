@@ -4,9 +4,6 @@ using BoardGamesShared.Enums;
 using BoardGamesShared.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BoardGames.Buliders
 {
@@ -26,7 +23,7 @@ namespace BoardGames.Buliders
 
         public List<PawChess> PawToChoseList { get; private set; }
 
-        public ChessGameBulider()
+        internal ChessGameBulider()
         {
             PawnHistoriesList = new List<IPawnHistory>();
             PawToChoseList = new List<PawChess>() { PawChess.Bishop, PawChess.Knight, PawChess.Queen, PawChess.Rock };

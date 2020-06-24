@@ -1,16 +1,12 @@
 ﻿using BoardGames.Extensions;
-using BoardGames.Interfaces;
-using BoardGames.Kernels;
-using Ninject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using BoardGamesShared.Enums;
 using BoardGamesShared.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BoardGames.Games.Chess.Rules
 {
-    internal class PawnRules : IMoveRule
+    internal class PawnRules
     {
         private readonly IBoard board;
         private IList<IPawnHistory> pawnHistoriesList;
@@ -38,18 +34,6 @@ namespace BoardGames.Games.Chess.Rules
 
             return fieldList;
         }
-
-	    public void SetStartPositionOnBoard(ref int idIncrementation)
-	    {
-		    IEnumerable<IField> whereSetPawn = board.FieldList.Where(w => w.Heigh == 7 || w.Heigh == 2);
-		    foreach (IField field in whereSetPawn)
-		    {
-			    field.Pawn = KernelInstance.Get<IPawn>();
-			    field.Pawn.Type = PawType.PawnChess;
-			    field.Pawn.Color = field.GetPawnStartColor();
-                field.Pawn.ID = ++idIncrementation;
-            }
-	    }
 
         private bool canMove(IField field) => field != null && field.Pawn == null;
         private int directionMove(PawColors color) => color == PawColors.Black ? -1 : 1;

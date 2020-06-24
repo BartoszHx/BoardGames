@@ -7,7 +7,7 @@ using BoardGameDatabase.Interfaces.Services;
 
 namespace BoardGameDatabase.Interfaces
 {
-    public interface IBoardGameUnitOfWork : IDisposable //Czy nazwać IBoardGameUnitOfWork?
+    public interface IBoardGameServices : IDisposable
     {
         IUserService UserService { get; }
         IMatchService MatchService { get; }

@@ -1,15 +1,9 @@
-﻿using BoardGames.Extensions;
-using BoardGames.Interfaces;
-using BoardGames.Kernels;
-using BoardGamesShared.Enums;
-using BoardGamesShared.Interfaces;
-using Ninject;
+﻿using BoardGamesShared.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BoardGames.Games.Chess.Rules
 {
-    internal class BishopRules : IMoveRule
+    internal class BishopRules
     {
 	    private readonly IBoard board;
 
@@ -20,18 +14,6 @@ namespace BoardGames.Games.Chess.Rules
 	    public IEnumerable<IField> WhereCanMove(IField field)
 	    {
 		    return StandardMoveRules.MoveAllCross(field, board, board.MaxHeight);
-	    }
-	    public void SetStartPositionOnBoard(ref int idIncrementation)
-	    {
-		    IEnumerable<IField> whereSetPawn = board.GetFieldListInEndHeigh().Where(w => w.Width == 3 || w.Width == 6);
-		    foreach (IField field in whereSetPawn)
-		    {
-			    field.Pawn = KernelInstance.Get<IPawn>();
-			    field.Pawn.Type = PawType.BishopChess;
-                field.Pawn.Color = field.GetPawnStartColor();
-                field.Pawn.ID = ++idIncrementation;
-
-            }
 	    }
     }
 }

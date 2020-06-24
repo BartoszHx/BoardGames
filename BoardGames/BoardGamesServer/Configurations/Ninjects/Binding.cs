@@ -9,7 +9,7 @@ namespace BoardGamesServer.Configurations
     {
         public override void Load()
         {
-            this.Bind<IBoardGameUnitOfWorkBulider>().To<BoardGameUnitOfWorkBulider>();
+            this.Bind<IBoardGameServiceBulider>().To<BoardGameUnitOfWorkBulider>();
             this.Bind<IGameOnlineService>().To<BoardGamesOnline.Services.GameOnline.GameOnlineService>();
             this.Bind<IUserService>().To<BoardGamesOnline.Services.Users.UserService>();
         }

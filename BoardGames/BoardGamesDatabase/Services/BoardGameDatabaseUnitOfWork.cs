@@ -9,7 +9,7 @@ using Ninject.Parameters;
 
 namespace BoardGameDatabase.Services
 {
-    internal class BoardGameDatabaseUnitOfWork : IBoardGameUnitOfWork
+    internal class BoardGameDatabaseUnitOfWork : IBoardGameServices
     {
         private readonly IBoardGameDbContext context;
         private readonly DbContextTransaction contextTransaction;

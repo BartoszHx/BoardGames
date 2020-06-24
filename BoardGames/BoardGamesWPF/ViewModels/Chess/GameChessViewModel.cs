@@ -1,5 +1,7 @@
-﻿using BoardGamesShared.Enums;
+﻿using BoardGames.Games.Chess;
+using BoardGamesShared.Enums;
 using BoardGamesShared.Interfaces;
+using BoardGamesWPF.Models;
 using System.Collections.Generic;
 
 namespace BoardGamesWPF.ViewModels.Chess
@@ -11,10 +13,12 @@ namespace BoardGamesWPF.ViewModels.Chess
         //Solo
         public GameChessViewModel()
         {
-            var game = new BoardGames.Buliders.ChessGameBulider()
-                .SetAlertMessage(Alert)
-                .SetChosePawUpgradeFunction(PawnUpgradeWindow)
-                .Bulid();
+
+            List<IPlayer> playerList = new List<IPlayer>();
+            playerList.Add(new PlayerModel("Test1",PawColors.White));
+            playerList.Add(new PlayerModel("Test2", PawColors.Black));
+
+            var game = new ChessGameCreator().StandardGame(playerList, Alert, PawnUpgradeWindow);
 
             base.Load(game);
         }

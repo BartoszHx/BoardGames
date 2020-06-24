@@ -1,14 +1,11 @@
-﻿using BoardGames.Extensions;
-using BoardGames.Interfaces;
-using BoardGamesShared.Enums;
-using BoardGamesShared.Interfaces;
+﻿using BoardGamesShared.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace BoardGames.Games.Chess.Rules
 {
-    internal class KingRules: IMoveRule
+    internal class KingRules
     {
 	    private readonly IBoard board;
         private IList<IPawnHistory> pawnHistoriesList;
@@ -34,18 +31,6 @@ namespace BoardGames.Games.Chess.Rules
         {
             return NormalMove(field);
         }
-
-        public void SetStartPositionOnBoard(ref int idIncrementation)
-	    {
-		    IEnumerable<IField> whereSetPawn = board.FieldList.Where(w => (w.Width == 4 && w.Heigh == 8 ) || (w.Width == 5 && w.Heigh == 1 ));
-		    foreach (IField field in whereSetPawn)
-		    {
-			    field.Pawn = KernelInstance.Get<IPawn>();
-			    field.Pawn.Type = PawType.KingChess;
-			    field.Pawn.Color = field.GetPawnStartColor();
-                field.Pawn.ID = ++idIncrementation;
-            }
-	    }
 
         public void DoCastlingMove(IField oldPosition, IField newPosition)
         {

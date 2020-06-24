@@ -20,8 +20,8 @@ namespace BoardGamesWPF.ViewModels
             CheckersClickCommand = new RelayCommand(CheckersClick);
 
             //Test
-            //new Views.GameView(new ViewModels.OnlineTest.GameOnlineViewModel()).ShowDialog();
-            new Views.GameView(new ViewModels.GameViewModel()).ShowDialog();
+            new Views.GameView(new ViewModels.OnlineTest.GameOnlineViewModel()).ShowDialog();
+            //new Views.GameView(new ViewModels.GameViewModel()).ShowDialog();
 
             //Ponieważ jestem leniwy, albo oszczędzam swój czas
             //ChessClick();

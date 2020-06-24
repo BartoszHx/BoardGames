@@ -1,11 +1,7 @@
-﻿using BoardGames.Buliders;
-using BoardGames.Extensions;
-using BoardGames.Interfaces;
-using BoardGames.Kernels;
+﻿using BoardGames.Interfaces;
 using BoardGamesShared.Enums;
 using BoardGamesShared.Interfaces;
-using Ninject;
-using Ninject.Parameters;
+using BoardGamesShared.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +24,7 @@ namespace BoardGames.Games.Chess
         private IEnumerable<PawColors> colorsInGame;
 	    private IRulesChess Rules;
 
-	    public ChessGame(IChessGameBulider bulider) //bulider zajmuje się wszystkim (Oprócz zasad, to jest lokalny twór)
+	    public ChessGame(IChessGameBulider bulider)
         {
             Board = bulider.Board;
             PlayerList = bulider.PlayerList;
@@ -42,12 +38,6 @@ namespace BoardGames.Games.Chess
             Rules = new RulesChess(Board, PawnHistoriesList);
             colorsInGame = PlayerList.Select(s => s.Color);
         }
-
-        public void SetStartPositionPaws()
-        {
-            Rules.SetStartPositionPaws();
-        }
-
 
         public void StartGame(IEnumerable<IPlayer> playerList)
 	    {
@@ -79,6 +69,8 @@ namespace BoardGames.Games.Chess
 			    return;
 		    }
 
+
+
             //Pomyśl. Zamisat mieć dwie moetody, gdzie szachmat musi wywolać szach. Przez co wołamy dwa razy tą samą metodę
             //Lepiej było by sprawdzić czy jest szach, zanotować tą informację (np. w Enum?), a potem sprawdzić czy jest szachmat.
 
@@ -94,8 +86,7 @@ namespace BoardGames.Games.Chess
                 fieldNew.Pawn.Type = (PawType)pawChosed;
             }
 
-            //Przenieść do zasad?
-            /*
+
             IPawnHistory history = KernelInstance.Get<IPawnHistory>();
             history.Turn = Turn;
             history.PreviusFiledID = fieldCurrent.ID;
@@ -103,7 +94,6 @@ namespace BoardGames.Games.Chess
             history.PawID = fieldNew.Pawn.ID;
 
             PawnHistoriesList.Add(history); //Myśę że można by zrobić extensiona
-            */
 
             Turn++;
             PlayerTurn = PlayerList.First(p => p.ID != PlayerTurn.ID);

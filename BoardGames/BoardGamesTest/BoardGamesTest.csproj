@@ -52,6 +52,7 @@
     <Compile Include="Games\Chess\ChessGameTest.cs" />
     <Compile Include="Games\Chess\Rules\CastlingRuleTest.cs" />
     <Compile Include="Games\Chess\Rules\KingRuleTest.cs" />
+    <Compile Include="Games\Chess\Rules\PawnRuleTest.cs" />
     <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

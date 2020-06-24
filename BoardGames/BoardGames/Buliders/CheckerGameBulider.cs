@@ -12,8 +12,8 @@ namespace BoardGames.Buliders
 {
     public class CheckerGameBulider
     {
-        public Action<MessageContents> Alert { get; private set; }
-        public IPlayer Player { get; private set; }
+        internal Action<MessageContents> Alert { get; private set; }
+        internal List<IPlayer> PlayerList { get; private set; }
 
         public CheckerGameBulider SetAlertMessage(Action<MessageContents> alert)
         {
@@ -21,9 +21,9 @@ namespace BoardGames.Buliders
             return this;
         }
 
-        public CheckerGameBulider SetPlayer(IPlayer player)
+        public CheckerGameBulider SetPlayerList(List<IPlayer> playerList)
         {
-            Player = player;
+            PlayerList = playerList;
             return this;
         }
 

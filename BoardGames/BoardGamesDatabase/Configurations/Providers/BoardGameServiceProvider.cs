@@ -9,9 +9,9 @@ using Ninject.Activation;
 
 namespace BoardGameDatabase.Configurations.Providers
 {
-    public class BoardGameServiceProvider : Provider<IBoardGameUnitOfWork>
+    public class BoardGameServiceProvider : Provider<IBoardGameServices>
     {
-        protected override IBoardGameUnitOfWork CreateInstance(IContext context)
+        protected override IBoardGameServices CreateInstance(IContext context)
         {
             bool withTransaction = (bool)context.Parameters.First(f => f.Name == "withTransaction").GetValue(context, null);
             return new BoardGameDatabaseUnitOfWork(StaticKernel.Get<IBoardGameDbContext>(), withTransaction);

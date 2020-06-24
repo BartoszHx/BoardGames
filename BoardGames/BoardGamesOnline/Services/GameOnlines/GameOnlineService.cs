@@ -16,13 +16,13 @@ namespace BoardGamesOnline.Services.GameOnline
 {
     public class GameOnlineService : IGameOnlineService
     {
-        private IBoardGameUnitOfWorkBulider boardGameBulider;
+        private IBoardGameServiceBulider serviceBulider;
         public List<SearchOpponent> SearchForMetchUsers { get; set; }
         public List<IGamePlay> PlayedMatches { get; set; }
 
-        public GameOnlineService(IBoardGameUnitOfWorkBulider bulider)
+        public GameOnlineService(IBoardGameServiceBulider bulider)
         {
-            this.boardGameBulider = bulider;
+            this.serviceBulider = bulider;
             SearchForMetchUsers = new List<SearchOpponent>();
             this.PlayedMatches = new List<IGamePlay>();
         }
@@ -89,7 +89,7 @@ namespace BoardGamesOnline.Services.GameOnline
                     return;
                 }
 
-                using (IBoardGameUnitOfWork service = boardGameBulider.Bulid())
+                using (IBoardGameServices service = serviceBulider.Bulid())
                 {
                     SearchForMetchUsers.Remove(first);
                     SearchForMetchUsers.Remove(secend);

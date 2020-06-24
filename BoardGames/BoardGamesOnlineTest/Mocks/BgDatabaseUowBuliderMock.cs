@@ -8,7 +8,7 @@ using BoardGameDatabase.Interfaces;
 namespace BoardGamesOnlineTest.Mocks
 {
     //Straszna nazwa, pomyślec nad ich zmianą
-    internal class BgDatabaseUowBuliderMock : IBoardGameUnitOfWorkBulider
+    internal class BgDatabaseUowBuliderMock : IBoardGameServiceBulider
     {
         private IBoardGameDbContext context;
         private bool withTransactionScope;
@@ -17,12 +17,12 @@ namespace BoardGamesOnlineTest.Mocks
             this.context = context;
         }
 
-        public IBoardGameUnitOfWork Bulid()
+        public IBoardGameServices Bulid()
         {
             return new BoardGameDatabase.Services.BoardGameDatabaseUnitOfWork(context, withTransactionScope);
         }
 
-        public IBoardGameUnitOfWorkBulider SetTransactionScope()
+        public IBoardGameServiceBulider SetTransactionScope()
         {
             withTransactionScope = true;
             return this;

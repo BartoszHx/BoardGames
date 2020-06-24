@@ -8,7 +8,6 @@ namespace BoardGames.Interfaces
     {
 	    IEnumerable<IField> PawnWherCanMove(IField field);
 	    bool PawnMove(IField fieldOld, IField fieldNew);
-	    void SetStartPositionPaws();
 	    bool IsPawnUpgrade(IField field);
 	    PawColors? IsCheckOnColor(IEnumerable<PawColors> colorList);
 	    PawColors? IsCheckmateOnColor(IEnumerable<PawColors> colorList);

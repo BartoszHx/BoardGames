@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BoardGamesClient.Buliders;
+using BoardGamesClient.Buliders.Games;
 using BoardGamesClient.Configurations.AutoMappers;
 using BoardGamesClient.Interfaces;
 using BoardGamesClient.Models;
@@ -19,6 +20,7 @@ namespace BoardGamesClient.Clients
     {
         private GameServer gameServer;
         private IGame game;
+        private GameBulider gameBulider;
         private Action<Dictionary<string, string>> message;
         private bool isOpponentSearchComplited;//Test
 
@@ -35,8 +37,6 @@ namespace BoardGamesClient.Clients
         {
             game.PlayerTurn = value.PlayerTurn;
             game.PlayerList = value.PlayerList;
-            //game.Board.FieldList = value.Board.FieldList;
-            //Test, chodzi o to aby nie przypisywac wartości na nowe tylko mapować dane. Dzięki temu powino się uniknąc problemów
 
             foreach(var fieldValue in value.Board.FieldList)
             {
@@ -53,7 +53,7 @@ namespace BoardGamesClient.Clients
             this.gameServer = new GameServer(bulider.ServerConnector);
             this.message = bulider.Message;
             this.User = bulider.User;
-            this.game = bulider.Game;
+            this.gameBulider = bulider.GameBulider;
             this.GameType = bulider.GameType;
             this.RefreshViewTest = bulider.RefreshViewAction;
         }
@@ -72,7 +72,10 @@ namespace BoardGamesClient.Clients
                 }
 
                 var playerList = respons.Match.MatchUsers.Select<MatchUser, IPlayer>(s => new Player { Name = s.User.Name, ID = s.User.UserId }).ToList();
-                this.game.StartGame(playerList);
+                this.game = gameBulider
+                    .SetPlayerList(playerList)
+                    .Bulid();
+                //this.game.StartGame(playerList);
 
                 this.MatchData = respons.Match;
 
@@ -130,41 +133,28 @@ namespace BoardGamesClient.Clients
 
         private void PlayMatchResponsAction(GamePlay gamePlay)
         {
-            //Co tutaj zrobić?!
-            //Nie mapowa modele tylko zrobić poprawne przepisywanie
-            //Czyli szukamy wszystkich pionków i ustawiamy je na nowych polach
-            //Bez żadnej zmiany modeli. I tak z pozostałymi kwestiami
             MatchData = gamePlay.Match;
             map(gamePlay.GameData);
             RefreshViewTest();
             game.CheckGameStatus();
-
-
-            /*
-            //Pytanie, tylko gra czy także widok?
-            GameData = gamePlay.GameData;
-            MatchData = gamePlay.Match;
-            //Sprawdzić czy jest wygrana/przegrana itp...
-            //Albo request niech przekazuje informacje o stanie gry?
-            RefreshViewTest();
-
-            //Dwa podejścia
-            //1 = po każdym requescie, sprawdzamy jak wyglada status gry, czyli czy jest koniec (szachmat) itp.
-            //2 = przesyłamy w requescie jaki jest status gry i go przekazujemy
-
-            game.CheckGameStatus(); 
-            */
         }
 
         private void map(IGameData data)
         {
             GameData.Turn = data.Turn;
             GameData.PlayerTurn = GameData.PlayerList.First(w => w.ID == data.PlayerTurn.ID);
-            GameData.PawnHistoriesList = data.PawnHistoriesList;
+            //GameData.PawnHistoriesList = data.PawnHistoriesList;
+
+            foreach(var abc in data.PawnHistoriesList)
+            {
+                if(!GameData.PawnHistoriesList.Any(a=> a.Turn == abc.Turn))
+                {
+                    GameData.PawnHistoriesList.Add(abc);
+                }
+            }
 
             List<IPawn> pawnList = GameData.Board.FieldList.Where(w => w.Pawn != null).Select(s => s.Pawn).ToList();
 
-            //Podejście 1, łatwe, aktualizacja całgo pola
             foreach(var field in GameData.Board.FieldList)
             {
                 var fieldRespons = data.Board.FieldList.First(f => f.ID == field.ID);
@@ -173,15 +163,7 @@ namespace BoardGamesClient.Clients
                 {
                     field.Pawn = fieldRespons.Pawn == null ? null : pawnList.First(f => f.ID == fieldRespons.Pawn.ID);
                 }
-
             }
-
-            //GameData.Board.FieldList
-            /*
-            var pawnFieldRespons = data.Board.FieldList.Where(w => w.Pawn != null).Select(s => new { FieldId = s.ID, PawnID = s.Pawn.ID});
-            var pawnField = GameData.Board.FieldList.Where(w => w.Pawn != null).Select(s => new { FieldId = s.ID, PawnID = s.Pawn.ID });
-            var joinPawn = pawnField.Join()
-            */
         }
     }
 }

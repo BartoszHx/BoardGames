@@ -63,9 +63,10 @@ namespace BoardGamesWPF.ViewModels.OnlineTest
             */
 
             //Szachy
-            var bulider = BoardGamesClient.ClientBulider.BulidGame();
-            gameClient =
-                bulider.SetActionMessage(Alert)
+            
+            gameClient = BoardGamesClient.ClientBulider
+                .BulidGame()
+                .SetActionMessage(Alert)
                 .SetUser(new BoardGamesClient.Models.User { UserId = randomValue, Name = "Test" + randomValue })
                 .SetChessGame(Alert, PawnUpgradeWindow)
                 .SetRereshViewAction(RefreshButton)
